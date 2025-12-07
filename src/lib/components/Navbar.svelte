@@ -36,7 +36,7 @@
     <!-- Desktop Links (Visible on desktop only) -->
     <div class="desktop-links">
         <!-- 1. Über mich -->
-        <a href="#uber-mich" class="nav-link">
+        <a href="/#uber-mich" class="nav-link">
           <button>Über mich</button>
         </a>
 
@@ -56,7 +56,7 @@
         </div>
 
         <!-- 5. Meine Arbeiten -->
-        <a href="#meine-arbeiten" class="nav-link">
+        <a href="/#meine-arbeiten" class="nav-link">
           <button>Meine Arbeiten</button>
         </a>
 
@@ -66,7 +66,7 @@
         </div>
 
         <!-- 7. Kontakt -->
-        <a href="#kontakt" class="nav-link">
+        <a href="/#kontakt" class="nav-link">
           <button>Kontakt</button>
         </a>
     </div>
@@ -83,13 +83,13 @@
 {#if isMenuOpen}
 <div class="mobile-overlay">
     <div class="overlay-links">
-        <a href="#uber-mich" onclick={closeMenu}>
+        <a href="/#uber-mich" onclick={closeMenu}>
             <button>Über mich</button>
         </a>
-        <a href="#meine-arbeiten" onclick={closeMenu}>
+        <a href="/#meine-arbeiten" onclick={closeMenu}>
             <button>Meine Arbeiten</button>
         </a>
-        <a href="#kontakt" onclick={closeMenu}>
+        <a href="/#kontakt" onclick={closeMenu}>
             <button>Kontakt</button>
         </a>
     </div>

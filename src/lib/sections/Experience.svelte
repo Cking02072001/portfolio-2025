@@ -137,6 +137,7 @@
         .experience-section {
             grid-template-columns: 1fr; /* Stack columns */
             padding: 100px 20px;
+            padding-top: 0;
             gap: var(--spacing-80);
         }
 
@@ -146,6 +147,7 @@
 
         .spline-container-large {
             max-width: 100%; /* Full width images on mobile */
+            transform: translateY(0%);
         }
     }
 </style>

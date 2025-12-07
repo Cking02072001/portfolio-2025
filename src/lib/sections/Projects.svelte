@@ -1,16 +1,15 @@
 <script>
   import ImageCard from '$lib/components/ImageCard.svelte';
   import StarSvg from '$lib/svg/StarSvg.svelte';
-  import { projectsData } from '$lib/data/projects';
+  import { projects, categories } from '$lib/data/projects';
 
-  let { categories, projects } = projectsData;
 
   let activeCategory = $state(categories[0]);
 
   let filteredProjects = $derived(
     activeCategory === categories[0]
         ? projects 
-        : projects.filter(p => p.category === activeCategory)
+        : projects.filter(p => p.tags[0] === activeCategory)
   );
 </script>
 
@@ -36,14 +35,14 @@
   </div>
 
   <div class="project-grid">
-      {#each filteredProjects as project (project.id)}
+      {#each filteredProjects as project}
         <div class="grid-item">
           <ImageCard 
              title={project.title}
-             description={project.description}
-             imageSrc={project.image}
-             primaryButtonText="View Case"
-             secondaryButtonText="Details"
+             description={project.shortDescription}
+             imageSrc={project.hoverImage}
+             projectId={project.id}
+             link={project.link}
           />
         </div>
       {/each}

@@ -5,8 +5,8 @@
     imageSrc = "https://placehold.co/400x600", 
     title = "Card Title", 
     description = "Description text goes here.", 
-    primaryButtonText = "Action 1", 
-    secondaryButtonText = "Action 2" 
+    projectId = "Action 2" ,
+    link = "#"
   } = $props();
 
   let isHovered = $state(false);
@@ -33,8 +33,8 @@
     <p>{description}</p>
     <h3>{title}</h3>
     <div class="actions">
-      <button>{primaryButtonText}</button>
-      <button class="purple-button">{secondaryButtonText}</button>
+      <a href="/projects?id={projectId}"><button>Mehr darüber</button></a>
+      <a href="{link}"><button class="purple-button">Zur Website</button></a>
     </div>
   </div>
 </div>

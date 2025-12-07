@@ -1,6 +1,6 @@
 <script lang="ts">
     import WIPCard from '$lib/components/WIPCard.svelte';
-    import { projects } from '$lib/data/wips';
+    import { wipProjects } from '$lib/data/projects';
 
     let scrollContainer: HTMLDivElement;
 
@@ -18,9 +18,9 @@
     
     <div class="content-column">
         <div class="carousel-container" bind:this={scrollContainer}>
-            {#each projects as project}
+            {#each wipProjects as project}
                 <div class="card-wrapper">
-                    <WIPCard imageSrc={project.image} altText={project.title} />
+                    <WIPCard imageSrc={project.hoverImage} altText={project.title} projectId={project.id} />
                 </div>
             {/each}
             <!-- Spacer ensures the last item has padding on the right when scrolling -->
@@ -163,7 +163,7 @@
 
         .carousel-container {
             width: 100%;
-            padding-left: 20px;
+            padding-left: 40px;
             order: 2; /* Carousel below controls */
         }
 

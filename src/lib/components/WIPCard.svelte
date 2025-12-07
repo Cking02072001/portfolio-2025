@@ -2,11 +2,13 @@
   let { 
     imageSrc = "https://placehold.co/350x250", 
     hoverImageSrc = "https://placehold.co/350x250/000000/FFFFFF", 
-    altText = "Work in Progress" 
+    altText = "Work in Progress",
+    projectId = "WIP-1"
   } = $props();
 </script>
 
 <div class="wip-card">
+  <a href="/projects?id={projectId}">
   <!-- Main Image -->
   <img src={imageSrc} alt={altText} class="main-img" />
   
@@ -14,6 +16,7 @@
   {#if hoverImageSrc}
     <img src={hoverImageSrc} alt={altText} class="hover-img" />
   {/if}
+  </a>
 </div>
 
 <style lang="scss">
