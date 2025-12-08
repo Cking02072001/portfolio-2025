@@ -23,6 +23,11 @@
     });
 </script>
 
+<svelte:head>
+  <title>{project.title}</title>
+  <meta name="description" content="{project.shortDescription}" />
+</svelte:head>
+
 <div class="project-page">
     
     <!-- Back Button -->

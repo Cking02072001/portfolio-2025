@@ -34,7 +34,7 @@ export const projects: Project[] = [
                 "https://placehold.co/300x300/e2e2e2/272727?text=Detail+5",
                 "https://placehold.co/600x600/923C56/FFFFFF?text=Detail+6",
                 "https://placehold.co/600x400/272727/FFFFFF?text=Detail+7"
-            ]
+            ],
         },
         { 
             id: "apex-interface", 
