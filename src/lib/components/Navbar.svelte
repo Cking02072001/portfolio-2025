@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import LogoSvg from "$lib/svg/LogoSvg.svelte";
     import LogoTextSvg from "$lib/svg/LogoTextSvg.svelte";
     import StarSvg from "$lib/svg/StarSvg.svelte";
@@ -6,6 +6,47 @@
     let { } = $props();
 
     let isMenuOpen = $state(false);
+
+      function handleScroll(e: MouseEvent) {
+    const currentTarget = e.currentTarget as HTMLAnchorElement;
+    const href = currentTarget.getAttribute('href');
+    
+    if (!href) return;
+
+    const isHomePage = window.location.pathname === '/';
+
+    if (href.startsWith('/#')) {
+      if (isHomePage) {
+        e.preventDefault();
+        
+        const targetId = href.substring(2); 
+        const element = document.getElementById(targetId);
+
+        if (element) {
+          const navHeight = 80;
+          const extraPadding = -10;
+          const offset = navHeight + extraPadding;
+
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+        closeMenu();
+      } else {
+        closeMenu();
+      }
+    } 
+    else if (href.startsWith('#') && isHomePage) {
+       e.preventDefault();
+       closeMenu();
+    }
+  }
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -36,7 +77,7 @@
     <!-- Desktop Links (Visible on desktop only) -->
     <div class="desktop-links">
         <!-- 1. Über mich -->
-        <a href="/#uber-mich" class="nav-link">
+        <a href="/#uber-mich" class="nav-link" onclick={handleScroll}>
           <button>Über mich</button>
         </a>
 
@@ -56,7 +97,7 @@
         </div>
 
         <!-- 5. Meine Arbeiten -->
-        <a href="/#meine-arbeiten" class="nav-link">
+        <a href="/#meine-arbeiten" class="nav-link" onclick={handleScroll}>
           <button>Meine Arbeiten</button>
         </a>
 
@@ -66,7 +107,7 @@
         </div>
 
         <!-- 7. Kontakt -->
-        <a href="/#kontakt" class="nav-link">
+        <a href="/#kontakt" class="nav-link" onclick={handleScroll}>
           <button>Kontakt</button>
         </a>
     </div>
