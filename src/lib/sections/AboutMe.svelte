@@ -3,7 +3,7 @@
 
     let { 
         title = "Design with Purpose",
-        subtitle = "Creative Direction",
+        subtitle = "by Celina Kammerhofer",
         description = "We craft digital experiences that resonate with your audience and drive meaningful engagement through strategic design.",
         buttonText = "View Projects"
     } = $props();
@@ -14,7 +14,7 @@
         <h1>{title}</h1>
         <h3>{subtitle}</h3>
         <p>{description}</p>
-        <button>{buttonText}</button>
+        <a href="#meine-arbeiten"> <button>{buttonText}</button></a>
     </div>
     
     <div class="right-content">

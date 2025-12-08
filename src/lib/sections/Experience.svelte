@@ -19,16 +19,23 @@
     <div class="column middle-col">
         <h3>Ausbildung</h3>
         <div class="experience-element">
-            <p class="fat-text">New Design University</p>
-            <p>Das Habe ich gemacht</p>
+            <p class="fat-text">New Design University, 
+                <br>Bachelor of Arts
+                <br>2021 – 2024, St. Pölten</p>
+            <p>Grafik & Informationsdesign mit Bachelor Schwerpunkt Branding, Kampagne & Webdesign
+            </p>
         </div>
         <div class="experience-element">
-            <p class="fat-text">New Design University</p>
-            <p>Das Habe ich gemacht</p>
+            <p class="fat-text">WIFI Foundation Course,
+                <br>Digital Designer
+                <br>2020 – 2021, St. Pölten</p>
+            <p>Zertifikat in Grafikdesign mit Schwerpunkt Digital Design </p>
         </div>
         <div class="experience-element">
-            <p class="fat-text">New Design University</p>
-            <p>Das Habe ich gemacht</p>
+            <p class="fat-text">BHAK Imst, 
+                <br>Matura
+                <br>2015 – 2020, Imst</p>
+            <p>BHS mit Schwerpunkt Tourismus und Marketing</p>
         </div>
     </div>
 
@@ -37,12 +44,14 @@
         <div class="text-group">
             <h3>Referenz</h3>
         <div class="experience-element">
-            <p class="fat-text">New Design University</p>
-            <p>Das Habe ich gemacht</p>
+            <p class="fat-text">Werbezimmer, Prutz
+                <br>Seit Juli 2024
+            </p>
+            <p>Webdesign, Content Manager & Social Media</p>
         </div>        
         <div class="experience-element">
-            <p class="fat-text">New Design University</p>
-            <p>Das Habe ich gemacht</p>
+            <p class="fat-text">Mandarfner Hof</p>
+            <p>Junior Hotelier, In House Marketing und Social Media, sowie Print und Content Manager</p>
         </div>
         </div>
 
@@ -63,6 +72,7 @@
         width: 100vw;
         min-height: 100vh; /* Ensures full height */
         padding: 120px 5vw; /* Top padding clears fixed nav, sides provide breathing room */
+        padding-bottom: 0px;
         background-color: var(--color-white);
         
         display: grid;
@@ -90,9 +100,7 @@
         align-items: center; 
     }
 
-    .middle-col {
-        gap: var(--spacing-20);
-    }
+    
 
     .right-col {
         gap: var(--spacing-80); /* Space between the text group and the bottom spline group */
