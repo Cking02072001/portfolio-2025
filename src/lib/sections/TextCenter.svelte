@@ -77,6 +77,10 @@
     }
 
     @media (max-width: 768px) {
+        .text-center-hero {
+            height: 50vh;      /* 50% der Bildschirmhöhe */
+            min-height: 400px; /* Sicherheitsabstand, damit Text nicht abgeschnitten wird */
+        }
         .content {
             gap: 15px;
         }

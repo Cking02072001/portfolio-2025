@@ -23,11 +23,11 @@
       <img src={imageSrc} alt={title} />
     </div>
     
-    <!-- Logo Overlay Wrapper -->
+    <!-- Logo Overlay Wrapper-->
     <div class="logo-overlay">
-        <MandarfnerHofSvg color={isHovered ? '#272727' : 'currentColor'} /> 
+        <!--<MandarfnerHofSvg color={isHovered ? '#272727' : 'currentColor'} /> -->
     </div>
-  </div>
+  </div> 
   
   <div class="content">
     <p>{description}</p>
@@ -72,6 +72,9 @@
       /* Force non-purple buttons to white on hover */
       button:not(.purple-button) {
         color: var(--color-white);
+      }
+      .purple-button{
+        color: var(--color-pink);
       }
     }
   }

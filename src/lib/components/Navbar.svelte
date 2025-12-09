@@ -237,7 +237,8 @@
         color: var(--color-white);
         
         &:hover {
-            color: var(--color-purple);
+            color: var(--color-pink);
+            font-size: 40px;
         }
     }
   }

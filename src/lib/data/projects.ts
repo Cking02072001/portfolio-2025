@@ -15,7 +15,7 @@ export interface ProjectsData {
     projects: Project[];
 }
 
-export const categories = ["Alle", "Webdesign", "Social Media", "Brand & Logo"];
+export const categories = ["Alle", "Webdesign", "Social Media", "Brand & Logo", "Neu kategorie"];
 
 export const projects: Project[] = [
         { 
@@ -34,7 +34,7 @@ export const projects: Project[] = [
                 "https://placehold.co/300x300/e2e2e2/272727?text=Detail+5",
                 "https://placehold.co/600x600/923C56/FFFFFF?text=Detail+6",
                 "https://placehold.co/600x400/272727/FFFFFF?text=Detail+7"
-            ],
+            ]
         },
         { 
             id: "apex-interface", 
@@ -49,27 +49,27 @@ export const projects: Project[] = [
                 "https://placehold.co/400x600?text=Apex+2",
                 "https://placehold.co/400x400?text=Apex+3",
                 "https://placehold.co/600x300?text=Apex+4",
-                "https://placehold.co/300x300?text=Apex+5",
+                "https://placeold.co/300x300?text=Apex+5",
                 "https://placehold.co/600x600?text=Apex+6",
                 "https://placehold.co/600x400?text=Apex+7"
             ]
         },
         { 
-            id: "vogue-spread", 
-            tags: ["Social Media", "Editorial"], 
-            title: "Vogue Spread", 
-            link: "/project?id=vogue-spread",
-            shortDescription: "Art direction and layout for the September issue.", 
+            id: "vox-and-arc", 
+            tags: ["Webdesign", "Print"], 
+            title: "VOX & ARC", 
+            link: "/project?id=vox-and-arc",
+            shortDescription: "Art direction und Konzeptentwicklung für ein 30er Radio und 50er TV inspiriertes Unternehmen", 
             longDescription: "For the September issue, we aimed to capture the ephemeral nature of autumn light. The art direction focused on organic textures and a warm, earthy color palette. The layout breaks the grid to create a sense of movement and spontaneity, mirroring the changing seasons. This digital adaptation for social media ensured the editorial content remained engaging and accessible across all platforms.",
-            mainImage: "https://placehold.co/600x400/D3546D/FFFFFF",
+            mainImage: "./src/lib/assets/Photos/Vox&Arc/V&A-06.png",
             images: [
-                "https://placehold.co/600x400?text=Vogue+1",
-                "https://placehold.co/400x600?text=Vogue+2",
-                "https://placehold.co/400x400?text=Vogue+3",
-                "https://placehold.co/600x300?text=Vogue+4",
-                "https://placehold.co/300x300?text=Vogue+5",
-                "https://placehold.co/600x600?text=Vogue+6",
-                "https://placehold.co/600x400?text=Vogue+7"
+                "./src/lib/assets/Photos/Vox&Arc/V&A-02.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-01.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-07.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-05.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-08.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-04.png",
+                "./src/lib/assets/Photos/Vox&Arc/V&A-03.png"
             ]
         },
         { 
