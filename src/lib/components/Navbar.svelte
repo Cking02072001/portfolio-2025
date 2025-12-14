@@ -7,46 +7,46 @@
 
     let isMenuOpen = $state(false);
 
-      function handleScroll(e: MouseEvent) {
-    const currentTarget = e.currentTarget as HTMLAnchorElement;
-    const href = currentTarget.getAttribute('href');
-    
-    if (!href) return;
+    function handleScroll(e: MouseEvent) {
+      const currentTarget = e.currentTarget as HTMLAnchorElement;
+      const href = currentTarget.getAttribute('href');
+      
+      if (!href) return;
 
-    const isHomePage = window.location.pathname === '/';
+      const isHomePage = window.location.pathname === '/';
 
-    if (href.startsWith('/#')) {
-      if (isHomePage) {
-        e.preventDefault();
-        
-        const targetId = href.substring(2); 
-        const element = document.getElementById(targetId);
+      if (href.startsWith('/#')) {
+        if (isHomePage) {
+          e.preventDefault();
+          
+          const targetId = href.substring(2); 
+          const element = document.getElementById(targetId);
 
-        if (element) {
-          const navHeight = 80;
-          const extraPadding = -10;
-          const offset = navHeight + extraPadding;
+          if (element) {
+            const navHeight = 80;
+            const extraPadding = -10;
+            const offset = navHeight + extraPadding;
 
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+          closeMenu();
+        } else {
+          closeMenu();
         }
-        closeMenu();
-      } else {
+      } 
+      else if (href.startsWith('#') && isHomePage) {
+        e.preventDefault();
         closeMenu();
       }
-    } 
-    else if (href.startsWith('#') && isHomePage) {
-       e.preventDefault();
-       closeMenu();
     }
-  }
 
     function toggleMenu() {
         isMenuOpen = !isMenuOpen;
@@ -146,7 +146,6 @@
     z-index: 100;
     width: 100%;
     background-color: var(--color-white);
-    padding: 30px 0;
   }
 
   .open {

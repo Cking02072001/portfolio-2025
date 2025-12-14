@@ -7,6 +7,43 @@
         description = "We craft digital experiences that resonate with your audience and drive meaningful engagement through strategic design.",
         buttonText = "View Projects"
     } = $props();
+
+        function handleScroll(e: MouseEvent) {
+      const currentTarget = e.currentTarget as HTMLAnchorElement;
+      const href = currentTarget.getAttribute('href');
+      
+      if (!href) return;
+
+      const isHomePage = window.location.pathname === '/';
+
+      if (href.startsWith('/#')) {
+        if (isHomePage) {
+          e.preventDefault();
+          
+          const targetId = href.substring(2); 
+          const element = document.getElementById(targetId);
+
+          if (element) {
+            const navHeight = 80;
+            const extraPadding = -10;
+            const offset = navHeight + extraPadding;
+
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        } else {
+        }
+      } 
+      else if (href.startsWith('#') && isHomePage) {
+      }
+    }
 </script>
 
 <section class="split-hero">
@@ -14,7 +51,7 @@
         <h1>{title}</h1>
         <h3>{subtitle}</h3>
         <p>{description}</p>
-        <a href="#meine-arbeiten"> <button>{buttonText}</button></a>
+        <a href="/#meine-arbeiten" onclick={handleScroll}><button>{buttonText}</button></a>
     </div>
     
     <div class="right-content">

@@ -3,6 +3,7 @@
 
   let { 
     imageSrc = "https://placehold.co/400x600", 
+    hoverImageSrc = "https://placehold.co/400x600", 
     title = "Card Title", 
     description = "Description text goes here.", 
     projectId = "Action 2" ,
@@ -20,12 +21,7 @@
 >
   <div class="image-container">
     <div class="card-image-wrapper">
-      <img src={imageSrc} alt={title} />
-    </div>
-    
-    <!-- Logo Overlay Wrapper-->
-    <div class="logo-overlay">
-        <!--<MandarfnerHofSvg color={isHovered ? '#272727' : 'currentColor'} /> -->
+      <img src={isHovered ? hoverImageSrc : imageSrc} alt={title} />
     </div>
   </div> 
   
@@ -34,7 +30,9 @@
     <h3>{title}</h3>
     <div class="actions">
       <a href="/projects?id={projectId}"><button>Mehr darüber</button></a>
-      <a href="{link}"><button class="purple-button">Zur Website</button></a>
+      {#if link != "#"}
+        <a href="{link}"><button class="purple-button">Zur Website</button></a>
+      {/if}
     </div>
   </div>
 </div>
@@ -106,7 +104,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      opacity: 0; /* Hidden by default */
       transition: opacity 0.3s ease;
     }
   }

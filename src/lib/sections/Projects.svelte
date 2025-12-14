@@ -40,7 +40,8 @@
           <ImageCard 
              title={project.title}
              description={project.shortDescription}
-             imageSrc={project.hoverImage}
+             imageSrc={project.defaultImage}
+             hoverImageSrc={project.hoverImage}
              projectId={project.id}
              link={project.link}
           />

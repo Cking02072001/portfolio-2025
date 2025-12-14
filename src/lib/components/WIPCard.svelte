@@ -3,7 +3,7 @@
     imageSrc = "https://placehold.co/350x250", 
     hoverImageSrc = "https://placehold.co/350x250/000000/FFFFFF", 
     altText = "Work in Progress",
-    projectId = "WIP-1"
+    projectId = "WIP-1",
   } = $props();
 </script>
 

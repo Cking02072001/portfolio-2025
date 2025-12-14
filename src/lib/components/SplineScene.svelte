@@ -36,6 +36,8 @@
     .spline-wrapper {
         position: relative;
         display: block;
+                width: 100% !important;
+        height: 100% !important; 
     }
 
     .spline-canvas {

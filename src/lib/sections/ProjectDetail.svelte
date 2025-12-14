@@ -2,6 +2,7 @@
     import { page } from '$app/stores';
     import { error } from '@sveltejs/kit';
     import { projects, wipProjects } from '$lib/data/projects';
+    import StarSvg from '$lib/svg/StarSvg.svelte';
 
     // Derived state to react to URL changes
     let projectId = $derived($page.url.searchParams.get('id') || "lumina-identity");
@@ -49,12 +50,25 @@
             <h1>{project.title}</h1>
             
             <!-- Safe check for tags array -->
+             <div class="categories">
             {#if project.tags && project.tags.length > 0}
-                <div class="meta-tag">{project.tags[0]}</div>
+                {#each project.tags as tag, i}
+                    <div class="meta-tag">{tag}</div>
+                    {#if i < project.tags.length - 1}
+                        <StarSvg size={"12px"} color={"var(--color-purple)"}/>
+                    {/if}
+                {/each}
             {/if}
+            </div>
 
             <p class="lead">{project.shortDescription}</p>
             <p class="body">{project.longDescription}</p>
+
+            {#if project.projectButtonLabel && project.projectButtonLink}
+                <a href={project.projectButtonLink} target="_blank" rel="noopener noreferrer" class="project-button">
+                    {project.projectButtonLabel}
+                </a>
+            {/if}
         </div>
     </section>
 
@@ -77,6 +91,30 @@
 </div>
 
 <style lang="scss">
+    .categories {
+        display: flex;
+        gap: var(--spacing-10);
+        flex-wrap: wrap;
+        margin-bottom: var(--spacing-20);
+        align-items: center; /* Vertically center items (stars and text) */
+    }
+
+    a {
+        margin-top: var(--spacing-20);
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px; 
+        color: var(--color-black);
+        padding: 0;
+        text-decoration: none;
+        font-family: var(--font-heading);
+        
+        &:hover {
+             text-decoration: underline;
+        }
+    }
+
     .project-page {
         width: 100vw;
         min-height: 100vh;
@@ -146,8 +184,8 @@
     .meta-tag {
         font-family: var(--font-heading);
         color: var(--color-purple);
-        font-size: 24px;
-        margin-bottom: var(--spacing-20);
+        font-size: 18px;
+        /* Removed margin-bottom to ensure proper vertical centering with the star in the flex container */
     }
 
     p.lead {

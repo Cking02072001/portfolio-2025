@@ -1,7 +1,13 @@
 <script>
-    // No specific script logic needed for this static page
-</script>
+    import Marquee from "$lib/components/Marquee.svelte";
 
+    // No specific script logic needed for this static page
+
+    import Navbar from "$lib/components/Navbar.svelte";
+    import Contact from "$lib/sections/Contact.svelte";
+    import Footer from "$lib/sections/Footer.svelte";
+
+</script>
 <div class="legal-page">
     <div class="nav-header">
         <a href="/" class="back-link">
@@ -84,7 +90,12 @@
         </div>
     </div>
 </div>
-
+<Navbar />
+<Marquee items={['Design', 'Development', 'Photography', 'Branding', 'Illustration']} speed={30} />
+<div id="kontakt">
+    <Contact />
+  </div>
+  <Footer />
 <style lang="scss">
     .legal-page {
         background-color: var(--color-white);

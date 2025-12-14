@@ -21,7 +21,7 @@
       <AboutMe />
     </div>
     <Experience />
-    <TextCenter />
+    <!-- <TextCenter /> -->
     <div id="meine-arbeiten">
     <Projects />
     </div>
