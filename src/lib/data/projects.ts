@@ -22,24 +22,23 @@ export const categories = ["Alle", "Webdesign", "Social Media", "Brand & Logo", 
 
 export const projects: Project[] = [
     { 
-        id: "lumina-identity", 
-        tags: ["Brand & Logo", "Branding"], 
-        title: "Lumina Identity", 
-        link: "/project?id=lumina-identity",
-        shortDescription: "A complete brand refresh focusing on light and clarity.", 
-        longDescription: "Lumina Identity represents a paradigm shift in how we perceive brand clarity. By stripping away the non-essential, we revealed the core luminosity of the brand's purpose. The project involved a complete overhaul of visual assets, including a dynamic logo system that adapts to light conditions, a monochromatic color palette with high-contrast accents, and a typographic approach that balances modernity with readability.",
-        mainImage: "https://placehold.co/600x400/923C56/FFFFFF",
+        id: "sascha-lorenz", 
+        tags: ["Webdesign","Brand & Logo"], 
+        title: "Sascha Lorenz", 
+        shortDescription: "Eine komplette Brandidentity für Sascha Lorenz.", 
+        longDescription: "Hier kommt noch was",
+        mainImage: "./src/lib/assets/Photos/Sascha/Mockup Website.png",
         images: [
-            "https://placehold.co/600x400/923C56/FFFFFF?text=Detail+1",
-            "https://placehold.co/400x600/272727/FFFFFF?text=Detail+2",
-            "https://placehold.co/400x400/D3546D/FFFFFF?text=Detail+3",
-            "https://placehold.co/600x300/4a4a4a/FFFFFF?text=Detail+4",
-            "https://placehold.co/300x300/e2e2e2/272727?text=Detail+5",
-            "https://placehold.co/600x600/923C56/FFFFFF?text=Detail+6",
-            "https://placehold.co/600x400/272727/FFFFFF?text=Detail+7"
+            "./src/lib/assets/Photos/Sascha/Pin.png",
+            "./src/lib/assets/Photos/Sascha/Kaffee.png",
+            "./src/lib/assets/Photos/Sascha/Websitelayout.png",
+            "./src/lib/assets/Photos/Sascha/Maus.png",
+            "./src/lib/assets/Photos/Sascha/Web-Mobillayout.png",
+            "./src/lib/assets/Photos/Sascha/Wand.png",
+            "./src/lib/assets/Photos/Sascha/Notitz.png"
         ],
-        defaultImage: "https://placehold.co/600x400/923C56/FFFFFF", // Added defaultImage
-        hoverImage: "https://placehold.co/600x400/FFFFFF/923C56?text=Lumina+Hover" // Added hoverImage
+        defaultImage: "./src/lib/assets/Photos/Sascha/Idle.png", // Added defaultImage
+        hoverImage: "./src/lib/assets/Photos/Sascha/Hovercard.png" // Added hoverImage
     },
     { 
         id: "apex-interface", 
@@ -106,15 +105,15 @@ export const projects: Project[] = [
 
 export const wipProjects: Project[] = [
     { 
-        id: "concept-alpha",
-        tags: ["WIP", "Concept"],
-        title: "Concept Alpha",
+        id: "Martina",
+        tags: ["WIP",],
+        title: "Martina Nußbaum",
         link: "#",
         shortDescription: "Early stage conceptual exploration.",
         longDescription: "Initial sketches and conceptual development for project Alpha.",
-        mainImage: "https://placehold.co/400x500/923C56/FFFFFF", 
-        defaultImage: "https://placehold.co/400x500/923C56/FFFFFF", // Added defaultImage
-        hoverImage: "https://placehold.co/400x500/FFFFFF/923C56",
+        mainImage: "src/lib/assets/Photos/Martina/Mainimage.png", 
+        defaultImage: "src/lib/assets/Photos/Martina/Idle.png", // Added defaultImage
+        hoverImage: "src/lib/assets/Photos/Martina/Hovercard.png",
         images: []
     },
     { 
