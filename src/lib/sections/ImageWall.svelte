@@ -1,6 +1,6 @@
 <script>
     let { 
-        text = "Trust me, with your websites",
+        text = "Trust me with your websites",
         images = [
             "https://placehold.co/200x300",
             "https://placehold.co/250x250",
