@@ -1,6 +1,7 @@
 <script lang="ts">
   import favicon from '$lib/assets/favicon.svg';
   import '../reset.css';
+  export const prerender = true;
 
   let { children } = $props();
 </script>
