@@ -27,24 +27,25 @@ export const projects: Project[] = [
         title: "Sascha Lorenz", 
         shortDescription: "Eine komplette Brandidentity für Sascha Lorenz.", 
         longDescription: "Hier kommt noch was",
-        mainImage: "./src/lib/assets/Photos/Sascha/Mockup Website.png",
+        // Path adjusted: static/Photos/... -> /Photos/...
+        mainImage: "/Photos/Sascha/Mockup Website.png",
         images: [
-            "./src/lib/assets/Photos/Sascha/Pin.png",
-            "./src/lib/assets/Photos/Sascha/Kaffee.png",
-            "./src/lib/assets/Photos/Sascha/Websitelayout.png",
-            "./src/lib/assets/Photos/Sascha/Maus.png",
-            "./src/lib/assets/Photos/Sascha/Web-Mobillayout.png",
-            "./src/lib/assets/Photos/Sascha/Wand.png",
-            "./src/lib/assets/Photos/Sascha/Notitz.png"
+            "/Photos/Sascha/Pin.png",
+            "/Photos/Sascha/Kaffee.png",
+            "/Photos/Sascha/Websitelayout.png",
+            "/Photos/Sascha/Maus.png",
+            "/Photos/Sascha/Web-Mobillayout.png",
+            "/Photos/Sascha/Wand.png",
+            "/Photos/Sascha/Notitz.png"
         ],
-        defaultImage: "./src/lib/assets/Photos/Sascha/Idle.png", // Added defaultImage
-        hoverImage: "./src/lib/assets/Photos/Sascha/Hovercard.png" // Added hoverImage
+        defaultImage: "/Photos/Sascha/Idle.png", 
+        hoverImage: "/Photos/Sascha/Hovercard.png" 
     },
-    { 
-        id: "apex-interface", 
-        tags: ["Webdesign", "Digital"], 
-        title: "Apex Interface", 
-        link: "/project?id=apex-interface",
+    {
+        id: "apex-interface",
+        tags: ["Webdesign", "Digital"],
+        title: "Apex Interface",
+        link: "/projects?id=apex-interface",
         shortDescription: "UI/UX design for a high-frequency trading platform.", 
         longDescription: "Apex Interface demanded a rigorous approach to user experience design, prioritizing speed and information density without sacrificing clarity. We conducted extensive user research with traders to understand their workflows, resulting in a dashboard that reduces cognitive load while providing real-time analytics. The dark mode interface was carefully calibrated to reduce eye strain during long trading sessions.",
         mainImage: "https://placehold.co/600x400/272727/FFFFFF",
@@ -57,8 +58,8 @@ export const projects: Project[] = [
             "https://placehold.co/600x600?text=Apex+6",
             "https://placehold.co/600x400?text=Apex+7"
         ],
-        defaultImage: "https://placehold.co/600x400/272727/FFFFFF", // Added defaultImage
-        hoverImage: "https://placehold.co/600x400/FFFFFF/272727?text=Apex+Hover" // Added hoverImage
+        defaultImage: "https://placehold.co/600x400/272727/FFFFFF",
+        hoverImage: "https://placehold.co/600x400/FFFFFF/272727?text=Apex+Hover"
     },
     { 
         id: "vox-and-arc", 
@@ -66,26 +67,27 @@ export const projects: Project[] = [
         title: "VOX & ARC", 
         shortDescription: "Art direction und Konzeptentwicklung für ein 30er Radio und 50er TV inspiriertes Unternehmen", 
         longDescription: "For the September issue, we aimed to capture the ephemeral nature of autumn light. The art direction focused on organic textures and a warm, earthy color palette. The layout breaks the grid to create a sense of movement and spontaneity, mirroring the changing seasons. This digital adaptation for social media ensured the editorial content remained engaging and accessible across all platforms.",
-        mainImage: "./src/lib/assets/Photos/Vox&Arc/V&A-06.png",
+        // Path adjusted: static/Photos/... -> /Photos/...
+        mainImage: "/Photos/Vox&Arc/V&A-06.png",
         images: [
-            "./src/lib/assets/Photos/Vox&Arc/V&A-02.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-01.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-07.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-05.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-08.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-04.png",
-            "./src/lib/assets/Photos/Vox&Arc/V&A-03.png"
+            "/Photos/Vox&Arc/V&A-02.png",
+            "/Photos/Vox&Arc/V&A-01.png",
+            "/Photos/Vox&Arc/V&A-07.png",
+            "/Photos/Vox&Arc/V&A-05.png",
+            "/Photos/Vox&Arc/V&A-08.png",
+            "/Photos/Vox&Arc/V&A-04.png",
+            "/Photos/Vox&Arc/V&A-03.png"
         ],
-        defaultImage: "./src/lib/assets/Photos/Vox&Arc/Vox&Arc Card.png", // Added defaultImage (using mainImage value)
-        hoverImage: "./src/lib/assets/Photos/Vox&Arc/V&A-hover.png",
+        defaultImage: "/Photos/Vox&Arc/Vox&Arc Card.png", 
+        hoverImage: "/Photos/Vox&Arc/V&A-hover.png",
         projectButtonLabel: "View PDF",
         projectButtonLink: "www.example.com"
     },
-    { 
-        id: "nordic-coffee", 
-        tags: ["Brand & Logo", "Packaging"], 
-        title: "Nordic Coffee", 
-        link: "/project?id=nordic-coffee",
+    {
+        id: "nordic-coffee",
+        tags: ["Brand & Logo", "Packaging"],
+        title: "Nordic Coffee",
+        link: "/projects?id=nordic-coffee",
         shortDescription: "Packaging design inspired by minimal Scandinavian aesthetics.", 
         longDescription: "Nordic Coffee's packaging reflects the purity and simplicity of its origin. We utilized sustainable materials and a minimalist design language to communicate the brand's commitment to quality and the environment. The typography is clean and understated, allowing the product's quality to speak for itself. Each roast is distinguished by a subtle color accent, creating a cohesive yet distinct product line.",
         mainImage: "https://placehold.co/600x400/4a4a4a/FFFFFF",
@@ -98,8 +100,8 @@ export const projects: Project[] = [
             "https://placehold.co/600x600?text=Nordic+6",
             "https://placehold.co/600x400?text=Nordic+7"
         ],
-        defaultImage: "https://placehold.co/600x400/4a4a4a/FFFFFF", // Added defaultImage
-        hoverImage: "https://placehold.co/600x400/FFFFFF/4a4a4a?text=Nordic+Hover" // Added hoverImage
+        defaultImage: "https://placehold.co/600x400/4a4a4a/FFFFFF",
+        hoverImage: "https://placehold.co/600x400/FFFFFF/4a4a4a?text=Nordic+Hover"
     }
 ];
 
@@ -111,9 +113,10 @@ export const wipProjects: Project[] = [
         link: "#",
         shortDescription: "Early stage conceptual exploration.",
         longDescription: "Initial sketches and conceptual development for project Alpha.",
-        mainImage: "src/lib/assets/Photos/Martina/Mainimage.png", 
-        defaultImage: "src/lib/assets/Photos/Martina/Idle.png", // Added defaultImage
-        hoverImage: "src/lib/assets/Photos/Martina/Hovercard.png",
+        // Path adjusted: static/Photos/... -> /Photos/...
+        mainImage: "/Photos/Martina/Mainimage.png", 
+        defaultImage: "/Photos/Martina/Idle.png", 
+        hoverImage: "/Photos/Martina/Hovercard.png",
         images: []
     },
     { 
@@ -124,7 +127,7 @@ export const wipProjects: Project[] = [
         shortDescription: "Structural layout and flow design.",
         longDescription: "Wireframing phase focusing on user journey and information architecture.",
         mainImage: "https://placehold.co/400x500/272727/FFFFFF", 
-        defaultImage: "https://placehold.co/400x500/272727/FFFFFF", // Added defaultImage
+        defaultImage: "https://placehold.co/400x500/272727/FFFFFF",
         hoverImage: "https://placehold.co/400x500/FFFFFF/272727",
         images: []
     },
@@ -136,7 +139,7 @@ export const wipProjects: Project[] = [
         shortDescription: "High-fidelity interactive prototype.",
         longDescription: "Interactive mockups testing animation and transitions.",
         mainImage: "https://placehold.co/400x500/D3546D/FFFFFF", 
-        defaultImage: "https://placehold.co/400x500/D3546D/FFFFFF", // Added defaultImage
+        defaultImage: "https://placehold.co/400x500/D3546D/FFFFFF",
         hoverImage: "https://placehold.co/400x500/FFFFFF/D3546D",
         images: []
     },
@@ -148,7 +151,7 @@ export const wipProjects: Project[] = [
         shortDescription: "Hand-drawn assets and illustrations.",
         longDescription: "Developing a custom illustration style for the Delta campaign.",
         mainImage: "https://placehold.co/400x500/4a4a4a/FFFFFF", 
-        defaultImage: "https://placehold.co/400x500/4a4a4a/FFFFFF", // Added defaultImage
+        defaultImage: "https://placehold.co/400x500/4a4a4a/FFFFFF",
         hoverImage: "https://placehold.co/400x500/FFFFFF/4a4a4a",
         images: []
     },
@@ -160,7 +163,7 @@ export const wipProjects: Project[] = [
         shortDescription: "3D visualisations and texture testing.",
         longDescription: "Rendering tests for the Epsilon product launch.",
         mainImage: "https://placehold.co/400x500/e2e2e2/272727", 
-        defaultImage: "https://placehold.co/400x500/e2e2e2/272727", // Added defaultImage
+        defaultImage: "https://placehold.co/400x500/e2e2e2/272727",
         hoverImage: "https://placehold.co/400x500/272727/e2e2e2",
         images: []
     }
