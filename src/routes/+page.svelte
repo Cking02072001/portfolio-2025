@@ -16,7 +16,7 @@
     <Navbar />
     <Hero />
     <Marquee items={['Design', 'Development', 'Photography', 'Branding', 'Illustration']} speed={30} />
-    <ImageWall text="Trust me, with your websites" />
+    <ImageWall text="Trust me with your websites" />
     <div id="uber-mich">
       <AboutMe />
     </div>
