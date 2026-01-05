@@ -18,7 +18,7 @@ export interface ProjectsData {
     projects: Project[];
 }
 
-export const categories = ["Alle", "Webdesign", "Social Media", "Brand & Logo", "Neu kategorie"];
+export const categories = ["Alle", "Webdesign", "Brand & Logo","Social Media & Marketing", "Grafik & Print"];
 
 export const projects: Project[] = [
     { 
@@ -42,28 +42,26 @@ export const projects: Project[] = [
         hoverImage: "/Photos/Sascha/Hovercard.png" 
     },
     {
-        id: "apex-interface",
-        tags: ["Webdesign", "Digital"],
-        title: "Apex Interface",
-        link: "/projects?id=apex-interface",
-        shortDescription: "UI/UX design for a high-frequency trading platform.", 
+        id: "Mandarfner Hof",
+        tags: ["Webdesign", "Social Media & Marketing","Grafik & Print"],
+        title: "Mandarfner Hof",
+        link: "https://www.mandarfnerhof.at/",
+        shortDescription: "Webdesign (c)Werbezimmer Christian Larcher & Celina Kammerhofer, Social Media Auftritt, Content Creation, SEO Verbesserungen, Newsletter programmiert, In House Print Projekte, etc.", 
         longDescription: "Apex Interface demanded a rigorous approach to user experience design, prioritizing speed and information density without sacrificing clarity. We conducted extensive user research with traders to understand their workflows, resulting in a dashboard that reduces cognitive load while providing real-time analytics. The dark mode interface was carefully calibrated to reduce eye strain during long trading sessions.",
-        mainImage: "https://placehold.co/600x400/272727/FFFFFF",
+        mainImage: "/Photos/Mandarfnerhof/Main.png",
         images: [
-            "https://placehold.co/600x400?text=Apex+1",
-            "https://placehold.co/400x600?text=Apex+2",
-            "https://placehold.co/400x400?text=Apex+3",
-            "https://placehold.co/600x300?text=Apex+4",
-            "https://placehold.co/300x300?text=Apex+5",
-            "https://placehold.co/600x600?text=Apex+6",
-            "https://placehold.co/600x400?text=Apex+7"
+            "/Photos/Mandarfnerhof/Card.png",
+            "/Photos/Mandarfnerhof/Social.png",
+            "/Photos/Mandarfnerhof/Web.png",
+            "/Photos/Mandarfnerhof/Newsletter.png",
+            "/Photos/Mandarfnerhof/Mobil.png"
         ],
-        defaultImage: "https://placehold.co/600x400/272727/FFFFFF",
-        hoverImage: "https://placehold.co/600x400/FFFFFF/272727?text=Apex+Hover"
+        defaultImage: "/Photos/Mandarfnerhof/Idle.png",
+        hoverImage: "/Photos/Mandarfnerhof/Hovercard.png"
     },
     { 
         id: "vox-and-arc", 
-        tags: ["Webdesign", "Print"], 
+        tags: ["Webdesign", "Branding & Logo", "Grafik & Print"], 
         title: "VOX & ARC", 
         shortDescription: "Art direction und Konzeptentwicklung für ein 30er Radio und 50er TV inspiriertes Unternehmen", 
         longDescription: "For the September issue, we aimed to capture the ephemeral nature of autumn light. The art direction focused on organic textures and a warm, earthy color palette. The layout breaks the grid to create a sense of movement and spontaneity, mirroring the changing seasons. This digital adaptation for social media ensured the editorial content remained engaging and accessible across all platforms.",
@@ -85,7 +83,7 @@ export const projects: Project[] = [
     },
     {
         id: "nordic-coffee",
-        tags: ["Brand & Logo", "Packaging"],
+        tags: ["Brand & Logo", "Grafik & Print"],
         title: "Nordic Coffee",
         link: "/projects?id=nordic-coffee",
         shortDescription: "Packaging design inspired by minimal Scandinavian aesthetics.", 
@@ -120,6 +118,23 @@ export const wipProjects: Project[] = [
         images: []
     },
     { 
+        id: "WestAmber",
+        tags: ["WIP"],
+        title: "West Amber Whisky",
+        link: "#",
+        shortDescription: "High-fidelity interactive prototype.",
+        longDescription: "Interactive mockups testing animation and transitions.",
+        mainImage: "/Photos/West Amber/Websitebar.png", 
+        defaultImage: "/Photos/West Amber/Idle.png",
+        hoverImage: "/Photos/West Amber/Hovercard.png",
+        images: [
+            "/Photos/West Amber/Flasche.png",
+            "/Photos/West Amber/Glas.png",
+            "/Photos/West Amber/Websitelayout.png",
+            "/Photos/West Amber/Mac.png",
+            "/Photos/West Amber/Glas-Flasche.png"]
+    },
+    { 
         id: "wireframes-beta",
         tags: ["WIP", "UX"],
         title: "Wireframes Beta",
@@ -129,18 +144,6 @@ export const wipProjects: Project[] = [
         mainImage: "https://placehold.co/400x500/272727/FFFFFF", 
         defaultImage: "https://placehold.co/400x500/272727/FFFFFF",
         hoverImage: "https://placehold.co/400x500/FFFFFF/272727",
-        images: []
-    },
-    { 
-        id: "prototype-gamma",
-        tags: ["WIP", "Prototyping"],
-        title: "Prototype Gamma",
-        link: "#",
-        shortDescription: "High-fidelity interactive prototype.",
-        longDescription: "Interactive mockups testing animation and transitions.",
-        mainImage: "https://placehold.co/400x500/D3546D/FFFFFF", 
-        defaultImage: "https://placehold.co/400x500/D3546D/FFFFFF",
-        hoverImage: "https://placehold.co/400x500/FFFFFF/D3546D",
         images: []
     },
     { 
