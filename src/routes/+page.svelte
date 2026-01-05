@@ -11,7 +11,7 @@
     import Hero from '$lib/sections/Hero.svelte';
     import WIP from '$lib/sections/WIP.svelte';
 </script>
-
+ 
 <div class="demo-container">
     <Navbar />
     <Hero />
