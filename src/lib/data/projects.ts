@@ -67,7 +67,7 @@ export const projects: Project[] = [
     },
     { 
         id: "vox-and-arc", 
-        tags: ["Webdesign", "Branding & Logo", "Grafik & Print"], 
+        tags: ["Webdesign", "Brand & Logo", "Grafik & Print"], 
         title: "VOX & ARC", 
         shortDescription: "Fiktives Branding und Webdesign, das die Nostalgie von Radio und TV mit moderner Technologie verbindet.", 
         longDescription: "Vox & Arc verbindet den Charme von 30er Jahre Radio und 50er Jahre TV mit modernster Technologie. Ziel war die Übersetzung von Nostalgie in eine funktionale Markenwelt. Neben Logo und Auststattung entstand ein einzigartiges Blog Modul. Es präsentiert digitale Inhalte im Layout klassischer Zeitungsartikel und schlägt so die visuelle Brücke zwischen analoger Vergangenheit und digitaler Gegenwart.",
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     },
     { 
         id: "WestAmber",
-        tags: [ "Grafik & Print","Branding & Logo", "Webdesign" ],
+        tags: [ "Grafik & Print","Brand & Logo", "Webdesign" ],
         title: "West Amber",
         link: "#",
         shortDescription: "Whisky Branding zwischen Tiroler Alpen und schottischen Highlands.",
@@ -102,7 +102,9 @@ export const projects: Project[] = [
             "/Photos/West Amber/Glas.png",
             "/Photos/West Amber/Websitelayout.png",
             "/Photos/West Amber/Mac.png",
-            "/Photos/West Amber/Glas-Flasche.png"]
+            "/Photos/West Amber/Glas-Flasche.png"],
+              pdfLabel: "Brandlook & Screendesign",
+        pdfLink:"/PDFs/WestAmber/Brandlook-Screendesign.pdf"
     },
     {
         id: "Mikit",
@@ -119,7 +121,9 @@ export const projects: Project[] = [
             "/Photos/Mikit/Ketteverpackt.png"
         ],
         defaultImage: "/Photos/Mikit/Idle.png",
-        hoverImage: "/Photos/Mikit/Hovercard.png"
+        hoverImage: "/Photos/Mikit/Hovercard.png",
+         pdfLabel: "Brandlook & Screendesign",
+        pdfLink:"/PDFs/Mikit/Brand-Look.pdf"
     },
     {
         id: "Nudeiful",
@@ -138,7 +142,9 @@ export const projects: Project[] = [
             "/Photos/Nudeiful/Web-shop.png"
         ],
         defaultImage: "/Photos/Nudeiful/Idle.png",
-        hoverImage: "/Photos/Nudeiful/Hovercard.png"
+        hoverImage: "/Photos/Nudeiful/Hovercard.png",
+        pdfLabel: "Brandlook & Screendesign",
+        pdfLink:"/PDFs/Nudeiful/Brandlook_Screendesign.pdf"
     },
     {
         id: "Herzstachel",
@@ -146,16 +152,18 @@ export const projects: Project[] = [
         title: "Herzstachel",
         shortDescription: "Fiktives Branding für die Zucht von Weißbauchigeln", 
         longDescription: "Herzstachel ist ein fiktives Herzensprojekt, das sich auf die ethische Zucht von Afrikanischen Weißbauchigeln spezialisiert. Das Ziel war ein visuelles Erscheinungsbild, das Vertrauen, Fürsorge und die Niedlichkeit der Tiere transportiert, ohne dabei kindisch zu wirken. Neben dem Logo und der Website entstand ein Newsletter Konzept, das zukünftige Igel Eltern informiert und begleitet.",
-        mainImage: "/Photos/Mikit/Hero.png",
+        mainImage: "/Photos/Herz/Hero.png",
         images: [
-            "/Photos/Mikit/Ohrringe.png",
-            "/Photos/Mikit/Kette.png",
-            "/Photos/Mikit/Verpackung.png",
-            "/Photos/Mikit/Social Media.png",
-            "/Photos/Mikit/Ketteverpackt.png"
+            "/Photos/Herz/Obenl.png",
+            "/Photos/Herz/Obenr.png",
+            "/Photos/Herz/Mobil.png",
+            "/Photos/Herz/Mitte.png",
+            "/Photos/Herz/Websitelayout.png"
         ],
-        defaultImage: "/Photos/Mikit/Idle.png",
-        hoverImage: "/Photos/Mikit/Hovercard.png"
+        defaultImage: "/Photos/Herz/Idle.png",
+        hoverImage: "/Photos/Herz/Hovercard.png",
+                pdfLabel: "Brandlook",
+        pdfLink:"/PDFs/Herz/Brand-Look.pdf"
     },
     {
         id: "Shake'ins",
@@ -163,16 +171,18 @@ export const projects: Project[] = [
         title: "Shake'ins",
         shortDescription: "Grunge Identität für eine Newcomer Rockband", 
         longDescription: "Ein Projekt voller Energie für die nächste Generation. Shake Ins ist eine Jugendband, die den rauen Sound des 90er und 2000er Grunge wiederaufleben lässt. Das Design fängt genau diesen Vibe ein. Jung, laut und unpoliert. Entstanden sind ein markantes Logo sowie eine passende Website und erstes Merchandise Design, das die Attitüde der Musik visuell tragbar macht.",
-        mainImage: "/Photos/Mikit/Hero.png",
+        mainImage: "/Photos/Shakeins/Hero.png",
         images: [
-            "/Photos/Mikit/Ohrringe.png",
-            "/Photos/Mikit/Kette.png",
-            "/Photos/Mikit/Verpackung.png",
-            "/Photos/Mikit/Social Media.png",
-            "/Photos/Mikit/Ketteverpackt.png"
+            "/Photos/Shakeins/obenl.png",
+            "/Photos/Shakeins/obenr.png",
+            "/Photos/Shakeins/Mobil.png",
+            "/Photos/Shakeins/Mitte.png",
+            "/Photos/Shakeins/Web.png"
         ],
-        defaultImage: "/Photos/Mikit/Idle.png",
-        hoverImage: "/Photos/Mikit/Hovercard.png"
+        defaultImage: "/Photos/Shakeins/Idle.png",
+        hoverImage: "/Photos/Shakeins/Hovercard.png",
+           pdfLabel: "Brandlook & Screendesign",
+        pdfLink:"/PDFs/Shakeins/Brandlook:Screendesign.pdf"
     },
 
 
@@ -181,7 +191,7 @@ export const projects: Project[] = [
 export const wipProjects: Project[] = [
     { 
         id: "Martina",
-        tags: ["WIP","Branding & Logo", "Webdesign", "Social Media & Marketing", "Grafik & Print" ],
+        tags: ["WIP","Brand & Logo", "Webdesign", "Social Media & Marketing", "Grafik & Print" ],
         title: "Martina Nußbaum",
         link: "#",
         shortDescription: "Personal Branding für psychosoziale Beratung und Coaching",
@@ -194,7 +204,7 @@ export const wipProjects: Project[] = [
     },
     {
         id: "M...",
-        tags: ["WIP","Webdesign", "Branding & Logo"],
+        tags: ["WIP","Webdesign", "Brand & Logo"],
         title: "M...",
         shortDescription: "Sneak Peak für ein alpines Hotelkonzept", 
         longDescription: "Ein erster Einblick in ein laufendes Projekt. Für ein exklusives alpines Hideaway entsteht derzeit ein komplettes Rebranding. Der Fokus liegt auf moderner Tradition und digitaler Sichtbarkeit. Mehr Details folgen...",
@@ -238,33 +248,19 @@ export const wipProjects: Project[] = [
 
     {
         id: "S...",
-        tags: ["WIP","Webdesign"],
+        tags: ["WIP","Webdesign","Brand & Logo","Grafik & Print"],
         title: "S...",
         shortDescription: "Visuelles Redesign für ein alpines Jahresevent", 
         longDescription: "Es handelt sich um das komplette Rebranding eines jährlichen Events. Ziel ist die Modernisierung des visuellen Auftritts, um Tradition und Eventkultur neu zu verbinden. Das Spektrum reicht von der Logo Entwicklung über den digitalen Auftritt bis hin zur umfassenden Print Ausstattung vor Ort.",
-        mainImage: "/Photos/Posh/Hero.png",
+        mainImage: "/Photos/S/Hero.png",
         images: [
         ],
-        defaultImage: "/Photos/Posh/Idle.png",
-        hoverImage: "/Photos/Posh/Hovercard.png",
-          projectButtonLabel: "Zur Website",
-        projectButtonLink: "https://www.posh-beauty.at/"
-    },
-    {
-        id: "Shiny Vault",
-        tags: ["Short","Branding & Logo"],
-        title: "Shiny Vault",
-        shortDescription: "Branding für Trading Card Game Sammlerstücke", 
-        longDescription: "Aus Leidenschaft wurde ein kleines Side Business. Shiny Vault ist mein eigener Shop für ausgewählte Pokémon Karten auf Whatnot und Cardmarket. Das Branding professionalisiert das Hobby und schafft einen Wiedererkennungswert in der Sammler Community.",
-        mainImage: "/Photos/Posh/Hero.png",
-        images: [
-        ],
-        defaultImage: "/Photos/Posh/Idle.png",
-        hoverImage: "/Photos/Posh/Hovercard.png",
+        defaultImage: "/Photos/S/Idle.png",
+        hoverImage: "/Photos/S/Hovercard.png",
     },
     {
         id: "Bäckelar Wirt",
-        tags: ["Short","Webdesign", "Branding & Logo"],
+        tags: ["Short","Webdesign", "Brandi & Logo"],
         title: "Bäckelar Wirt",
         shortDescription: "Konzeptuelle Neuinterpretation einer Hotelmarke", 
         longDescription: "Meine persönliche Vision für das Jahr 2025. Ein konzeptionelles Redesign von Logo und Website für den Bäckelar Wirt.",

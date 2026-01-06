@@ -4,12 +4,15 @@
   import { projects, categories } from '$lib/data/projects';
 
 
+  // State für die aktive Kategorie (Standard: erste Kategorie, meist "Alle")
   let activeCategory = $state(categories[0]);
 
+  // Derived State für die gefilterten Projekte
+  // Nutzt .includes(), um zu prüfen, ob die Kategorie im tags-Array existiert
   let filteredProjects = $derived(
     activeCategory === categories[0]
         ? projects 
-        : projects.filter(p => p.tags[0] === activeCategory)
+        : projects.filter(p => p.tags.includes(activeCategory))
   );
 </script>
 
