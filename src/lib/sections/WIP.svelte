@@ -13,7 +13,7 @@
 
 <section class="wips-section">
     <div class="title-column">
-        <h1>Meine WIPs</h1>
+        <h1>WIPs & Shorts</h1>
     </div>
     
     <div class="content-column">

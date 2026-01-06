@@ -21,43 +21,48 @@
         <div class="experience-element">
             <p class="fat-text">New Design University, 
                 <br>Bachelor of Arts
-                <br>2021 – 2024, St. Pölten</p>
-            <p>Grafik & Informationsdesign mit Bachelor Schwerpunkt Branding, Kampagne & Webdesign
+                <br>2021 – 2024</p>
+            <p>Studium für Grafik- & Informationsdesign. Fokus auf Branding, Kampagnenführung & Webdesign.
             </p>
         </div>
         <div class="experience-element">
             <p class="fat-text">WIFI Foundation Course,
                 <br>Digital Designer
-                <br>2020 – 2021, St. Pölten</p>
-            <p>Zertifikat in Grafikdesign mit Schwerpunkt Digital Design </p>
+                <br>2020 – 2021</p>
+            <p>Intensivausbildung im Bereich Grafikdesign und digitale Medien.</p>
         </div>
         <div class="experience-element">
             <p class="fat-text">BHAK Imst, 
-                <br>Matura
-                <br>2015 – 2020, Imst</p>
-            <p>BHS mit Schwerpunkt Tourismus und Marketing</p>
+                <br>Reife- & Diplomprüfung
+                <br>2015 – 2020</p>
+            <p>Höhere Lehranstalt mit Ausbildungsschwerpunkt Marketing & Tourismus.</p>
         </div>
     </div>
 
     <!-- Right Column: H3 + Text + H3 + Spline -->
     <div class="column right-col">
         <div class="text-group">
-            <h3>Referenz</h3>
+            <h3>Experience</h3>
+            <div class="experience-element">
+                <p class="fat-text">Freelance Design
+                </p>
+                <p>Selbstständige Tätigkeit als Digital Designerin.</p>
+            </div>        
         <div class="experience-element">
             <p class="fat-text">Werbezimmer, Prutz
                 <br>Seit Juli 2024
             </p>
-            <p>Webdesign, Content Manager & Social Media</p>
+            <p>Webdesign, Content Management & Social Media.</p>
         </div>        
         <div class="experience-element">
             <p class="fat-text">Mandarfner Hof</p>
-            <p>Junior Hotelier, In House Marketing und Social Media, sowie Print und Content Manager</p>
+            <p>Marketing & Hotelmanagement Operative Leitung In-House Marketing, Social Media Betreuung und Print-Produktion.</p>
         </div>
         </div>
 
-        <div class="secondary-group">
+        <div class="secondary-group" style="margin-top: -60px;">
             <h3>Hobbies</h3>
-            <div class="spline-container-small">
+            <div class="spline-container-small" style="margin-top: -30px;">
                 <SplineScene 
                     sceneUrl={rightSceneUrl} 
                 />

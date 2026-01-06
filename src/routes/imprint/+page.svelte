@@ -26,34 +26,37 @@
             <p class="subtitle">Disclosure according to § 25 Media Act (MedienG)</p>
 
             <p class="private-note">
-                <strong>Note:</strong> This is a purely private, non-commercial website.
+                <strong>Note:</strong> The content serves to showcase personal skills and visual works.
             </p>
 
             <div class="address-block">
-                <strong>Celina Kammerhofe</strong><br>
-                Innsbruck <br>
+                <strong>Media Proprietor & Publisher</strong><br>
+                Celina Kammerhofer<br>
+                Mandarfen 81 <br>
+                6481 St. Leonhard <br>
                 Austria
             </div>
 
             <div class="contact-block">
                 <h3>Contact</h3>
                 <p>
-                    Email: <a href="mailto:mail">mail</a>
+                    Email: <a href="mailto:hi@celina.design">hi@celina.design</a>
                 </p>
             </div>
 
             <div class="purpose-block">
                 <h3>Purpose of the Website</h3>
                 <p>
-                    Personal portfolio and presentation of private coding projects.
+                    Online portfolio for the presentation of design and coding projects. 
                 </p>
             </div>
 
             <div class="liability-block">
                 <h3>Liability for Content</h3>
                 <p>
-                    The contents of this website have been created with the utmost care. However, I cannot guarantee the correctness, completeness, and up-to-dateness of the information provided.
-                </p>
+                    The content and works created by the site operator on these pages are subject to copyright law. Duplication, processing, distribution, and any kind of exploitation require the written consent of the respective author or creator. Third-party contents (e.g., projects realized with agencies) are marked as such.
+                </p><br>
+                <p>This portfolio contains links to external third-party websites. I have no influence on the contents of those websites, therefore I cannot assume any liability for these external contents.</p>
             </div>
         </div>
 
@@ -64,34 +67,37 @@
             
             <h3>1. General Information</h3>
             <p>
-                The following notes provide a simple overview of what happens to your personal data when you visit this website. Personal data is all data with which you can be personally identified. This policy is based on the EU General Data Protection Regulation (GDPR / DSGVO).
+                The following information provides a simple overview of what happens to your personal data when you visit this website. The operator of this website takes the protection of your personal data very seriously. I treat your personal data confidentially and in accordance with the statutory data protection regulations (GDPR/DSGVO).
             </p>
 
             <h3>2. Hosting</h3>
             <p>
-                This website is hosted by an external service provider (Hoster). The personal data collected on this website is stored on the hoster's servers. This may include IP addresses, meta and communication data, website accesses, and other data generated via a website.
+                This website is hosted by an external service provider. The provider of the pages automatically collects and stores information in so-called server log files, which your browser automatically transmits to us. This includes: IP address, browser type/version, operating system, referrer URL, and time of the server request. This data is not merged with other data sources.
             </p>
 
             <h3>3. Data Collection on this Website</h3>
             <h4>Cookies</h4>
             <p>
-                This website uses only technical cookies necessary for the operation of the site. No tracking or advertising cookies are used.
+                This website aims to use as few cookies as possible. Only technically necessary cookies are used to ensure the proper operation of the website. No advertising or tracking cookies are used.
             </p>
 
             <h4>Contact via Email</h4>
             <p>
-                If you contact me via email, your request, including all resulting personal data (name, request), will be stored and processed for the purpose of processing your request. This data will not be passed on without your consent.
+                If you contact me via email, your inquiry, including all resulting personal data (name, email address, message), will be stored and processed by me for the purpose of processing your request. I do not pass on this data without your consent.
             </p>
+            <h4>Fonts</h4>
+            <p>To ensure a consistent display of fonts, this page uses web fonts. These are hosted locally on my server. When you access a page, your browser loads the required web fonts into your browser cache to display texts and fonts correctly. No connection to third-party servers (e.g., Google Fonts) is established for this purpose, and no personal data is transferred.</p>
+
 
             <h3>4. Your Rights</h3>
             <p>
-                You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. You can contact me at any time at the email address given above. You also have the right to lodge a complaint with the competent supervisory authority (in Austria: Österreichische Datenschutzbehörde).
+                You have the right to receive information about the origin, recipient, and purpose of your stored personal data free of charge at any time. You also have the right to request the correction or deletion of this data. For this purpose, you can contact me at any time at the email address given in the imprint. You also have the right to lodge a complaint with the competent supervisory authority (Austrian Data Protection Authority).
             </p>
         </div>
     </div>
 </div>
 <Navbar />
-<Marquee items={['Design', 'Webdesign', 'UI/UX Deisgn', 'Branding & Logo', 'Illustration', 'Social Media', 'Grafik & Print']} speed={30} />
+<Marquee items={['UI/UX & Webdesign', 'Branding & Logo', 'Social Media & Marketing', 'Grafik, Illustration & Print', '3D & 2D Animation']} speed={30} />
 <div id="kontakt">
     <Contact />
   </div>

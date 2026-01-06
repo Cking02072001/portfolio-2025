@@ -15,7 +15,7 @@
 <div class="demo-container">
     <Navbar />
     <Hero />
-    <Marquee items={['Design', 'Webdesign', 'UI/UX Deisgn', 'Branding & Logo', 'Illustration', "Social Media", "Grafik & Print"]} speed={30} />
+    <Marquee items={['UI/UX & Webdesign', 'Branding & Logo', 'Social Media & Marketing', 'Grafik, Illustration & Print', '3D & 2D Animation']} speed={30} />
     <ImageWall text="Trust me with your websites" />
     <div id="uber-mich">
       <AboutMe />

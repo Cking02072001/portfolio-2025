@@ -63,12 +63,19 @@
 
             <p class="lead">{project.shortDescription}</p>
             <p class="body">{project.longDescription}</p>
+<div class="button-group">
+    {#if project.projectButtonLabel && project.projectButtonLink}
+        <a href={project.projectButtonLink} target="_blank" rel="noopener noreferrer" class="project-button">
+            {project.projectButtonLabel}
+        </a>
+    {/if}
 
-            {#if project.projectButtonLabel && project.projectButtonLink}
-                <a href={project.projectButtonLink} target="_blank" rel="noopener noreferrer" class="project-button">
-                    {project.projectButtonLabel}
-                </a>
-            {/if}
+    {#if project.pdfLink}
+        <a href={project.pdfLink} target="_blank" rel="noopener noreferrer" class="pdf-button">
+            {project.pdfLabel || 'Download PDF'}
+        </a>
+    {/if}
+</div>
         </div>
     </section>
 

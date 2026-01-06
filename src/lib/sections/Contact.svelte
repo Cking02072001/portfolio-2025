@@ -1,14 +1,14 @@
 <script>
     let { 
         title = "Let's Talk",
-        email = "hello@studio.com",
-        instagramUrl = "https://instagram.com"
+        email = "hi@celina.design",
+        instagramUrl = "https://www.instagram.com/cmk.fig"
     } = $props();
 </script>
 
 <section class="contact-section">
     <div class="left-content">
-        <h1>Lets work together & create something</h1>
+        <h1>Let’s create <br><i>with purpose.</i></h1>
     </div>
 
     <div class="right-content">

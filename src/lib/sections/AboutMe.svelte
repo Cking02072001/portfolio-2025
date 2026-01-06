@@ -4,7 +4,8 @@
     let { 
         title = "Design with Purpose",
         subtitle = "by Celina Kammerhofer",
-        description = "We craft digital experiences that resonate with your audience and drive meaningful engagement through strategic design.",
+        description = "Digital Native, die ganzheitlich und medienübergreifend denkt. Vom haptischen Erlebnis bis zur responsiven Website verbinde ich reine Ästhetik mit strategischem Marketing. ",
+       Text = "Als multidisziplinäre Designerin entwickle ich visuelle Identitäten, die auf allen Kanälen funktionieren. Mit fundiertem Wissen in Branding, Social Media und SEO sorge ich dafür, dass deine Vision digital Realität wird und deine Marke sichtbar bleibt.",
         buttonText = "View Projects"
     } = $props();
 
@@ -51,7 +52,7 @@
         <h1>{title}</h1>
         <h3>{subtitle}</h3>
         <p>{description}</p>
-        <a href="/#meine-arbeiten" onclick={handleScroll}><button>{buttonText}</button></a>
+        <p>{Text}</p>
     </div>
     
     <div class="right-content">
