@@ -2,13 +2,13 @@
     let { 
         text = "Trust me with your websites",
         images = [
-            "https://placehold.co/200x300",
-            "https://placehold.co/250x250",
-            "https://placehold.co/300x200",
-            "https://placehold.co/200x200",
-            "https://placehold.co/220x300",
-            "https://placehold.co/280x280",
-            "https://placehold.co/240x320"
+            "/Photos/CK/ImageWall05.png",
+            "Photos/CK/ImageWall01.png",
+            "Photos/CK/ImageWall07.png",
+            "Photos/CK/ImageWall03.png",
+            "Photos/CK/ImageWall04.png",
+            "",
+            "Photos/CK/ImageWall06.png"
         ]
     } = $props();
 
