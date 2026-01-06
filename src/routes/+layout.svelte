@@ -14,24 +14,24 @@
 
 <style lang="scss">
   @font-face {
-    font-family: 'Voyage'; 
-    src: url('/fonts/voyage/voyage-bold.otf') format('opentype');
+    font-family: 'Boska'; 
+    src: url('/fonts/Boska/Boska-Bold.otf') format('opentype');
     font-weight: 700; 
     font-style: normal;
     font-display: swap; 
   }
 
   @font-face {
-    font-family: 'Halyard'; 
-    src: url('/fonts/halyard/Halyard_Text_Light.otf') format('opentype');
+    font-family: 'Red'; 
+    src: url('/fonts/Red/RedHatDisplay-Regular.ttf') format('truetype');
     font-weight: 300; 
     font-style: normal;
     font-display: swap; 
   }
 
   @font-face {
-    font-family: 'Halyard'; 
-    src: url('/fonts/halyard/Halyard_Text_Medium_Italic.otf') format('opentype');
+    font-family: 'Red'; 
+    src: url('/fonts/Red/RedHatDisplay-BoldItalic.ttf') format('opentype');
     font-weight: 500; 
     font-style: italic;
     font-display: swap; 
@@ -39,8 +39,8 @@
 
   :root {
     /* Fonts */
-    --font-heading: 'Voyage', sans-serif;
-    --font-reading: 'Halyard', serif; 
+    --font-heading: 'Boska', sans-serif;
+    --font-reading: 'Red', serif; 
 
     /* Colors */
     --color-white: #FBF9F9;
