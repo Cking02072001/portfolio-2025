@@ -82,24 +82,21 @@ export const projects: Project[] = [
         projectButtonLink: "www.example.com"
     },
     {
-        id: "nordic-coffee",
-        tags: ["Brand & Logo", "Grafik & Print"],
-        title: "Nordic Coffee",
-        link: "/projects?id=nordic-coffee",
+        id: "Mikit",
+        tags: ["Brand & Logo", "Social Media & Marketing"],
+        title: "MIKIT",
         shortDescription: "Packaging design inspired by minimal Scandinavian aesthetics.", 
         longDescription: "Nordic Coffee's packaging reflects the purity and simplicity of its origin. We utilized sustainable materials and a minimalist design language to communicate the brand's commitment to quality and the environment. The typography is clean and understated, allowing the product's quality to speak for itself. Each roast is distinguished by a subtle color accent, creating a cohesive yet distinct product line.",
-        mainImage: "https://placehold.co/600x400/4a4a4a/FFFFFF",
+        mainImage: "/Photos/Mikit/Hero.png",
         images: [
-            "https://placehold.co/600x400?text=Nordic+1",
-            "https://placehold.co/400x600?text=Nordic+2",
-            "https://placehold.co/400x400?text=Nordic+3",
-            "https://placehold.co/600x300?text=Nordic+4",
-            "https://placehold.co/300x300?text=Nordic+5",
-            "https://placehold.co/600x600?text=Nordic+6",
-            "https://placehold.co/600x400?text=Nordic+7"
+            "/Photos/Mikit/Ohrringe.png",
+            "/Photos/Mikit/Kette.png",
+            "/Photos/Mikit/Verpackung.png",
+            "/Photos/Mikit/Social Media.png",
+            "/Photos/Mikit/Ketteverpackt.png"
         ],
-        defaultImage: "https://placehold.co/600x400/4a4a4a/FFFFFF",
-        hoverImage: "https://placehold.co/600x400/FFFFFF/4a4a4a?text=Nordic+Hover"
+        defaultImage: "/Photos/Mikit/Idle.png",
+        hoverImage: "/Photos/Mikit/Hovercard.png"
     }
 ];
 
