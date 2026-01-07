@@ -162,5 +162,10 @@
             max-width: 100%; /* Full width images on mobile */
             transform: translateY(0%);
         }
+        /* --- NEU HINZUFÜGEN --- */
+        /* Damit wird die linke Spalte (mit dem iPad) komplett ausgeblendet */
+        .left-col {
+            display: none;
+        }
     }
 </style>
