@@ -215,6 +215,18 @@ export const wipProjects: Project[] = [
         hoverImage: "/Photos/M/Hovercard.png",
     },
     {
+        id: "KOS",
+        tags: ["WIP","Webdesign", "Brand & Logo"],
+        title: "KOS",
+        shortDescription: "Screendesign und Branding für ein fiktives Design Hotel", 
+        longDescription: "Für KOS, ein fiktives Designhotel mit nordischer Seele, habe ich das komplette Branding und Webdesign entwickelt. Die visuelle Identität lebt von einem bewussten, spannenden Kontrast: Das Herzstück bilden kraftvolle, tief in der Folklore verwurzelte Illustrationen von Waldtieren, die eine mystische Geschichte erzählen. Um diese visuelle Fülle auszubalancieren, bildet ein radikal klares Layout mit einer ruhigen, aber fetten und selbstbewussten Typografie den modernen Gegenpol. Diese Kombination schafft eine einzigartige Atmosphäre zwischen skandinavischem Minimalismus und lebendiger Tradition.",
+        mainImage: "/Photos/KOS/Hero.png",
+        images: [
+        ],
+        defaultImage: "/Photos/KOS/Idle.png",
+        hoverImage: "/Photos/KOS/Hovercard.png",
+    },
+    {
         id: "Skischule Luis",
         tags: ["Short","Webdesign"],
         title: "Skischule Luis",
