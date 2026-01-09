@@ -104,7 +104,7 @@ export const projects: Project[] = [
             "/Photos/West Amber/Mac.png",
             "/Photos/West Amber/Glas-Flasche.png"],
               pdfLabel: "Brandlook & Screendesign",
-        pdfLink:"/PDFs/WestAmber/Brandlook-Screendesign.pdf"
+        pdfLink:"/PDFs/WestAmber/Brandlook_Screendesign.pdf"
     },
     {
         id: "Mikit",
