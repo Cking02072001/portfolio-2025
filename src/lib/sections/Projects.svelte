@@ -111,6 +111,8 @@
     /* Keep vertical gap */
     row-gap: var(--spacing-80);
     width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
   }
 
   .grid-item {
