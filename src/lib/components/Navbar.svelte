@@ -1,142 +1,158 @@
 <script lang="ts">
-    import LogoSvg from "$lib/svg/LogoSvg.svelte";
-    import LogoTextSvg from "$lib/svg/LogoTextSvg.svelte";
-    import StarSvg from "$lib/svg/StarSvg.svelte";
+  import LogoSvg from "$lib/svg/LogoSvg.svelte";
+  import LogoTextSvg from "$lib/svg/LogoTextSvg.svelte";
+  import StarSvg from "$lib/svg/StarSvg.svelte";
 
-    let { } = $props();
+  let {} = $props();
 
-    let isMenuOpen = $state(false);
+  let isMenuOpen = $state(false);
 
-    function handleScroll(e: MouseEvent) {
-      const currentTarget = e.currentTarget as HTMLAnchorElement;
-      const href = currentTarget.getAttribute('href');
-      
-      if (!href) return;
+  function handleScroll(e: MouseEvent) {
+    const currentTarget = e.currentTarget as HTMLAnchorElement;
+    const href = currentTarget.getAttribute("href");
 
-      const isHomePage = window.location.pathname === '/';
+    if (!href) return;
 
-      if (href.startsWith('/#')) {
-        if (isHomePage) {
-          e.preventDefault();
-          
-          const targetId = href.substring(2); 
-          const element = document.getElementById(targetId);
+    const isHomePage = window.location.pathname === "/";
 
-          if (element) {
-            const navHeight = 80;
-            const extraPadding = -10;
-            const offset = navHeight + extraPadding;
-
-            const bodyRect = document.body.getBoundingClientRect().top;
-            const elementRect = element.getBoundingClientRect().top;
-            const elementPosition = elementRect - bodyRect;
-            const offsetPosition = elementPosition - offset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-          closeMenu();
-        } else {
-          closeMenu();
-        }
-      } 
-      else if (href.startsWith('#') && isHomePage) {
+    if (href.startsWith("/#")) {
+      if (isHomePage) {
         e.preventDefault();
+
+        const targetId = href.substring(2);
+        const element = document.getElementById(targetId);
+
+        if (element) {
+          const navHeight = 80;
+          const extraPadding = -10;
+          const offset = navHeight + extraPadding;
+
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+        closeMenu();
+      } else {
         closeMenu();
       }
+    } else if (href.startsWith("#") && isHomePage) {
+      e.preventDefault();
+      closeMenu();
     }
+  }
 
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-        if (typeof document !== 'undefined') {
-            document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-        }
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = isMenuOpen ? "hidden" : "";
     }
+  }
 
-    // Close menu when a link is clicked
-    function closeMenu() {
-        if (isMenuOpen) {
-            toggleMenu();
-        }
+  // Close menu when a link is clicked
+  function closeMenu() {
+    if (isMenuOpen) {
+      toggleMenu();
     }
+  }
+
+  function handleLogoClick(e: MouseEvent) {
+    if (window.location.pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      closeMenu();
+    }
+  }
 </script>
 
 <nav class="fixed-navbar" class:open={isMenuOpen}>
   <div class="nav-content">
-    
     <!-- Mobile Burger Button (Visible on mobile only) -->
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <button class="burger-menu-btn" onclick={toggleMenu} aria-expanded={isMenuOpen}>
-        <span class="bar top-bar"></span>
-        <span class="bar middle-bar"></span>
-        <span class="bar bottom-bar"></span>
+    <button
+      class="burger-menu-btn"
+      onclick={toggleMenu}
+      aria-expanded={isMenuOpen}
+    >
+      <span class="bar top-bar"></span>
+      <span class="bar middle-bar"></span>
+      <span class="bar bottom-bar"></span>
     </button>
-    
+
     <!-- Desktop Links (Visible on desktop only) -->
     <div class="desktop-links">
-        <!-- 1. Über mich -->
-        <a href="/#uber-mich" class="nav-link" onclick={handleScroll}>
-          <button>Über mich</button>
-        </a>
+      <!-- 1. Über mich -->
+      <a href="/#uber-mich" class="nav-link" onclick={handleScroll}>
+        <button>Über mich</button>
+      </a>
 
-        <!-- 2. Star -->
-        <div class="separator">
-          <StarSvg size="20px" color="var(--color-black)" />
-        </div>
+      <!-- 2. Star -->
+      <div class="separator">
+        <StarSvg size="20px" color="var(--color-black)" />
+      </div>
 
-        <!-- 3. Logo (Primary) -->
-        <div class="logo">
-          <LogoSvg size="96px" />
-        </div>
+      <!-- 3. Logo (Primary) -->
+      <a href="/" class="logo" onclick={handleLogoClick}>
+        <LogoSvg size="96px" />
+      </a>
 
-        <!-- 4. Star -->
-        <div class="separator">
-          <StarSvg size="20px" color="var(--color-black)" />
-        </div>
+      <!-- 4. Star -->
+      <div class="separator">
+        <StarSvg size="20px" color="var(--color-black)" />
+      </div>
 
-        <!-- 5. Meine Arbeiten -->
-        <a href="/#meine-arbeiten" class="nav-link" onclick={handleScroll}>
-          <button>Meine Arbeiten</button>
-        </a>
+      <!-- 5. Meine Arbeiten -->
+      <a href="/#meine-arbeiten" class="nav-link" onclick={handleScroll}>
+        <button>Meine Arbeiten</button>
+      </a>
 
-        <!-- 6. Star -->
-        <div class="separator">
-          <StarSvg size="20px" color="var(--color-black)" />
-        </div>
+      <!-- 6. Star -->
+      <div class="separator">
+        <StarSvg size="20px" color="var(--color-black)" />
+      </div>
 
-        <!-- 7. Kontakt -->
-        <a href="/#kontakt" class="nav-link" onclick={handleScroll}>
-          <button>Kontakt</button>
-        </a>
+      <!-- 7. Kontakt -->
+      <a href="/#kontakt" class="nav-link" onclick={handleScroll}>
+        <button>Kontakt</button>
+      </a>
     </div>
 
     <!-- Mobile Text Logo (Visible on mobile only) -->
     <div class="mobile-logo">
-        <LogoTextSvg size="36px" color={!isMenuOpen ? "var(--color-black)" : "var(--color-white)"} />
+      <a href="/" onclick={handleLogoClick}>
+        <LogoTextSvg
+          size="36px"
+          color={!isMenuOpen ? "var(--color-black)" : "var(--color-white)"}
+        />
+      </a>
     </div>
-
   </div>
 </nav>
 
 <!-- Full-Screen Overlay Menu -->
 {#if isMenuOpen}
-<div class="mobile-overlay">
+  <div class="mobile-overlay">
     <div class="overlay-links">
-        <a href="/#uber-mich" onclick={closeMenu}>
-            <button>Über mich</button>
-        </a>
-        <a href="/#meine-arbeiten" onclick={closeMenu}>
-            <button>Meine Arbeiten</button>
-        </a>
-        <a href="/#kontakt" onclick={closeMenu}>
-            <button>Kontakt</button>
-        </a>
+      <a href="/#uber-mich" onclick={closeMenu}>
+        <button>Über mich</button>
+      </a>
+      <a href="/#meine-arbeiten" onclick={closeMenu}>
+        <button>Meine Arbeiten</button>
+      </a>
+      <a href="/#kontakt" onclick={closeMenu}>
+        <button>Kontakt</button>
+      </a>
     </div>
-</div>
+  </div>
 {/if}
-
 
 <style lang="scss">
   .fixed-navbar {
@@ -156,11 +172,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-40); 
+    gap: var(--spacing-40);
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-20);
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
   }
 
   /* Desktop View */
@@ -168,7 +184,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-40); 
+    gap: var(--spacing-40);
   }
 
   .logo {
@@ -176,9 +192,12 @@
     align-items: center;
     line-height: 0;
     transition: opacity 0.2s ease;
-    
+    color: var(--color-black); /* Ensure it stays black */
+    text-decoration: none; /* No underline */
+
     &:hover {
       opacity: 0.8;
+      color: var(--color-black); /* Explicitly keep it black on hover */
     }
   }
 
@@ -216,8 +235,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-black); 
-    z-index: 99; 
+    background-color: var(--color-black);
+    z-index: 99;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -230,15 +249,15 @@
     flex-direction: column;
     gap: var(--spacing-80);
     text-align: center;
-    
+
     a button {
-        font-size: 32px; /* Large font for mobile overlay */
-        color: var(--color-white);
-        
-        &:hover {
-            color: var(--color-pink);
-            font-size: 40px;
-        }
+      font-size: 32px; /* Large font for mobile overlay */
+      color: var(--color-white);
+
+      &:hover {
+        color: var(--color-pink);
+        font-size: 40px;
+      }
     }
   }
 
@@ -267,7 +286,7 @@
     background-color: var(--color-black);
     transition: all 0.3s ease;
   }
-  
+
   /* Mobile Logo is hidden on desktop */
   .mobile-logo {
     display: none;
@@ -284,7 +303,7 @@
       justify-content: space-between; /* Use space-between for mobile layout */
       padding: 0;
     }
-    
+
     .desktop-links {
       display: none; /* Hide all desktop links */
     }
@@ -295,10 +314,10 @@
       justify-content: center;
       align-items: center;
       transform: translateX(-5%);
-      
+
       /* Reset color for the logo, it's black by default */
       :global(.text-logo) {
-          color: var(--color-black) !important;
+        color: var(--color-black) !important;
       }
     }
 
@@ -313,18 +332,20 @@
 
     /* Burger animation when menu is open */
     .burger-menu-btn[aria-expanded="true"] {
-        .bar {
-            background-color: var(--color-white); /* Change color when menu is open */
-        }
-        .top-bar {
-            transform: translateY(9px) rotate(45deg);
-        }
-        .middle-bar {
-            opacity: 0;
-        }
-        .bottom-bar {
-            transform: translateY(-9px) rotate(-45deg);
-        }
+      .bar {
+        background-color: var(
+          --color-white
+        ); /* Change color when menu is open */
+      }
+      .top-bar {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .middle-bar {
+        opacity: 0;
+      }
+      .bottom-bar {
+        transform: translateY(-9px) rotate(-45deg);
+      }
     }
   }
 </style>

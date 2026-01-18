@@ -1,8 +1,7 @@
 <script>
-  import ImageCard from '$lib/components/ImageCard.svelte';
-  import StarSvg from '$lib/svg/StarSvg.svelte';
-  import { projects, categories } from '$lib/data/projects';
-
+  import ImageCard from "$lib/components/ImageCard.svelte";
+  import StarSvg from "$lib/svg/StarSvg.svelte";
+  import { projects, categories } from "$lib/data/projects";
 
   // State für die aktive Kategorie (Standard: erste Kategorie, meist "Alle")
   let activeCategory = $state(categories[0]);
@@ -11,47 +10,45 @@
   // Nutzt .includes(), um zu prüfen, ob die Kategorie im tags-Array existiert
   let filteredProjects = $derived(
     activeCategory === categories[0]
-        ? projects 
-        : projects.filter(p => p.tags.includes(activeCategory))
+      ? projects
+      : projects.filter((p) => p.tags.includes(activeCategory)),
   );
 </script>
 
 <section class="projects-section">
-  
   <div class="header">
     <h1>Best of Cases</h1>
-    
+
     <div class="filters">
       {#each categories as cat, i}
-          <button 
-              class="filter-btn {activeCategory === cat ? 'active' : ''}"
-              onclick={() => activeCategory = cat}
-          >
-              {cat}
-          </button>
+        <button
+          class="filter-btn {activeCategory === cat ? 'active' : ''}"
+          onclick={() => (activeCategory = cat)}
+        >
+          {cat}
+        </button>
 
-          {#if i < categories.length - 1}
-              <StarSvg size={"12px"}/> 
-          {/if}
+        {#if i < categories.length - 1}
+          <StarSvg size={"12px"} />
+        {/if}
       {/each}
     </div>
   </div>
 
   <div class="project-grid">
-      {#each filteredProjects as project}
-        <div class="grid-item">
-          <ImageCard 
-             title={project.title}
-             description={project.shortDescription}
-             imageSrc={project.defaultImage}
-             hoverImageSrc={project.hoverImage}
-             projectId={project.id}
-             link={project.link}
-          />
-        </div>
-      {/each}
+    {#each filteredProjects as project}
+      <div class="grid-item">
+        <ImageCard
+          title={project.title}
+          description={project.shortDescription}
+          imageSrc={project.defaultImage}
+          hoverImageSrc={project.hoverImage}
+          projectId={project.id}
+          link={project.link}
+        />
+      </div>
+    {/each}
   </div>
-
 </section>
 
 <style lang="scss">
@@ -64,7 +61,7 @@
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline; 
+    align-items: baseline;
     margin-bottom: var(--spacing-80);
     flex-wrap: wrap;
     gap: var(--spacing-40);
@@ -95,19 +92,19 @@
     opacity: 0.5;
 
     &:hover {
-        opacity: 0.8;
+      opacity: 0.8;
     }
 
     &.active {
-        opacity: 1;
+      opacity: 1;
     }
   }
 
   .project-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    /* Remove horizontal gap so items can push to edges */
-    column-gap: 0; 
+    grid-template-columns: 1fr 1fr;
+    /* Add horizontal gap to prevent sticking */
+    column-gap: var(--spacing-40, 40px);
     /* Keep vertical gap */
     row-gap: var(--spacing-80);
     width: 100%;
@@ -133,25 +130,25 @@
   /* Mobile Responsive */
   @media (max-width: 900px) {
     .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-20);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--spacing-20);
     }
 
     .project-grid {
-        grid-template-columns: 1fr;
-        /* Restore gap for single column layout */
-        gap: var(--spacing-40);
+      grid-template-columns: 1fr;
+      /* Restore gap for single column layout */
+      gap: var(--spacing-40);
     }
-    
+
     /* Center everything on mobile */
     .grid-item:nth-child(odd),
     .grid-item:nth-child(even) {
-        justify-content: center;
+      justify-content: center;
     }
-    
+
     .filter-btn {
-        font-size: 18px;
+      font-size: 18px;
     }
   }
 </style>
