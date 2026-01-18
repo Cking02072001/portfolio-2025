@@ -182,7 +182,7 @@ export const projects: Project[] = [
         defaultImage: "/Photos/Shakeins/Idle.png",
         hoverImage: "/Photos/Shakeins/Hovercard.png",
            pdfLabel: "Brandlook & Screendesign",
-        pdfLink:"/PDFs/Shakeins/Brandlook:Screendesign.pdf"
+        pdfLink:"/PDFs/Shakeins/Brandlook_Screendesign.pdf"
     },
 
 
