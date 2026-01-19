@@ -1,52 +1,57 @@
 <script lang="ts">
-  import favicon from '$lib/assets/favicon.svg';
-  import '../reset.css';
+  import favicon from "$lib/assets/favicon.svg";
+  import "../reset.css";
+  import Loader from "$lib/components/Loader.svelte";
 
   let { children } = $props();
 </script>
 
 <svelte:head>
   <link rel="icon" href={favicon} />
-  <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+  <script
+    async
+    src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"
+  ></script>
 </svelte:head>
 
+<Loader />
 {@render children()}
 
 <style lang="scss">
   @font-face {
-    font-family: 'Boska'; 
-    src: url('/fonts/Boska/Boska-Bold.otf') format('opentype');
-    font-weight: 700; 
+    font-family: "Boska";
+    src: url("/fonts/Boska/Boska-Bold.otf") format("opentype");
+    font-weight: 700;
     font-style: normal;
-    font-display: swap; 
+    font-display: swap;
   }
 
   @font-face {
-    font-family: 'Red'; 
-    src: url('/fonts/Red/RedHatDisplay-Regular.ttf') format('truetype');
-    font-weight: 300; 
+    font-family: "Red";
+    src: url("/fonts/Red/RedHatDisplay-Regular.ttf") format("truetype");
+    font-weight: 300;
     font-style: normal;
-    font-display: swap; 
+    font-display: swap;
   }
 
   @font-face {
-    font-family: 'Red'; 
-    src: url('/fonts/Red/RedHatDisplay-BoldItalic.ttf') format('opentype');
-    font-weight: 500; 
+    font-family: "Red";
+    src: url("/fonts/Red/RedHatDisplay-BoldItalic.ttf") format("opentype");
+    font-weight: 500;
     font-style: italic;
-    font-display: swap; 
+    font-display: swap;
   }
 
   :root {
     /* Fonts */
-    --font-heading: 'Boska', sans-serif;
-    --font-reading: 'Red', serif; 
+    --font-heading: "Boska", sans-serif;
+    --font-reading: "Red", serif;
 
     /* Colors */
-    --color-white: #FBF9F9;
-    --color-purple: #923C56;
+    --color-white: #fbf9f9;
+    --color-purple: #923c56;
     --color-black: #272727;
-    --color-pink: #D3546D;
+    --color-pink: #d3546d;
 
     /* Spacing */
     --spacing-10: 10px;
@@ -85,7 +90,9 @@
       font-style: italic;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: var(--font-heading);
     }
 
@@ -98,7 +105,7 @@
       font-family: var(--font-heading);
       color: var(--color-black);
       text-decoration: none;
-      
+
       &:hover {
         text-decoration: underline;
       }

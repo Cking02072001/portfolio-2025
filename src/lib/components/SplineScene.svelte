@@ -1,31 +1,33 @@
 <script lang="ts">
     import { Application } from "@splinetool/runtime";
     import { onMount } from "svelte";
+    import { loadingState } from "$lib/stores/loading.svelte";
 
-    let { 
-        sceneUrl, 
-        className = "" 
-    } = $props();
+    let { sceneUrl, className = "" } = $props();
 
     let canvas: HTMLCanvasElement;
     let isLoaded = $state(false);
 
     onMount(() => {
+        // Reset loading state on mount
+        loadingState.isLoading = true;
+
         if (canvas && sceneUrl) {
             const app = new Application(canvas);
             app.load(sceneUrl).then(() => {
                 isLoaded = true;
+                loadingState.isLoading = false;
             });
+        } else {
+            // Fallback if no canvas/url
+            loadingState.isLoading = false;
         }
     });
 </script>
 
 <div class="spline-wrapper {className}">
-    <canvas 
-        bind:this={canvas} 
-        class="spline-canvas"
-    ></canvas>
-    
+    <canvas bind:this={canvas} class="spline-canvas"></canvas>
+
     <!-- White rectangle that appears after load to cover bottom right -->
     {#if isLoaded}
         <div class="cover-rect"></div>
@@ -36,13 +38,13 @@
     .spline-wrapper {
         position: relative;
         display: block;
-                width: 100% !important;
-        height: 100% !important; 
+        width: 100% !important;
+        height: 100% !important;
     }
 
     .spline-canvas {
         width: 100% !important;
-        height: 100% !important; 
+        height: 100% !important;
         display: block;
         background-color: var(--color-white);
         outline: none;
@@ -52,10 +54,10 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        width: 160px; 
-        height: 60px; 
+        width: 160px;
+        height: 60px;
         background-color: var(--color-white);
         z-index: 10;
-        pointer-events: none; 
+        pointer-events: none;
     }
 </style>
