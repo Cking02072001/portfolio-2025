@@ -1,16 +1,16 @@
 <script>
-    let { 
+    let {
         title = "STUDIO",
         leftLinkText = "Impressum",
         leftLinkUrl = "/impressum",
         rightLinkText = "Datenschutz",
-        rightLinkUrl = "/datenschutz"
+        rightLinkUrl = "/datenschutz",
     } = $props();
 </script>
 
 <footer class="site-footer">
     <div class="link-wrapper left">
-        <a href={"http://www.sl1.at"}>Programmiert von SL</a>
+        <a href={"http://sl1.at"}>Programmiert von SL</a>
     </div>
 
     <div class="title-wrapper">
@@ -29,7 +29,7 @@
         background-color: var(--color-purple);
         display: flex;
         justify-content: space-between;
-        align-items: baseline; 
+        align-items: baseline;
     }
 
     .title-wrapper {
@@ -45,7 +45,7 @@
     .link-wrapper {
         /* Fixed width ensures the H1 remains perfectly centered */
         width: 300px;
-        
+
         a {
             font-family: var(--font-heading);
             font-size: 24px;
@@ -79,9 +79,8 @@
         .link-wrapper {
             width: auto;
             text-align: center !important;
-            
 
-                a {
+            a {
                 font-size: 18px;
             }
 
@@ -95,7 +94,5 @@
         .title-wrapper {
             margin-bottom: 20px;
         }
-
-       
     }
 </style>
