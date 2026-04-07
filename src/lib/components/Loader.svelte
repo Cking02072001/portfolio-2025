@@ -6,23 +6,31 @@
     let isVisible = $state(true);
     let minTimeElapsed = $state(false);
 
-    // Total animation duration + buffer (4.4s)
-    const MIN_DURATION = 4400;
+    // Total animation duration + buffer (1.8s)
+    const MIN_DURATION = 1800;
+    const MAX_DURATION = 2500;
 
     onMount(() => {
-        const timer = setTimeout(() => {
+        const minTimer = setTimeout(() => {
             minTimeElapsed = true;
         }, MIN_DURATION);
 
-        return () => clearTimeout(timer);
+        // Force hide at MAX_DURATION regardless of loading state
+        const maxTimer = setTimeout(() => {
+            isVisible = false;
+        }, MAX_DURATION);
+
+        return () => {
+            clearTimeout(minTimer);
+            clearTimeout(maxTimer);
+        };
     });
 
     $effect(() => {
-        if (!loadingState.isLoading && minTimeElapsed) {
-            // Add a small delay for smoothness before fading out
+        if (!loadingState.isLoading && minTimeElapsed && isVisible) {
             setTimeout(() => {
                 isVisible = false;
-            }, 500);
+            }, 100);
         }
     });
 
@@ -40,7 +48,7 @@
 </script>
 
 {#if isVisible}
-    <div class="loader-overlay" transition:fade={{ duration: 1000 }}>
+    <div class="loader-overlay" transition:fade={{ duration: 800 }}>
         <svg
             viewBox="0 0 82 50"
             version="1.1"
@@ -102,18 +110,13 @@
 
 <style>
     :root {
-        /* Startfarben */
-        --bg-color: #fbf9f9;
-        --logo-color: #231f20;
+        --speed-stamm: 0.6s;
+        --speed-c-top: 0.8s;
+        --speed-c-zu-k: 0.9s;
+        --speed-fuss: 0.6s;
+        --speed-stern: 0.4s;
 
-        /* Geschwindigkeiten (Overlapped Flow) */
-        --speed-stamm: 0.8s;
-        --speed-c-top: 1.2s;
-        --speed-c-zu-k: 1.5s;
-        --speed-fuss: 0.7s;
-        --speed-stern: 0.5s;
-
-        /* Easings (Simplified to ease-in-out for fluid feel) */
+        /* Back to ease-in-out for a classic, flawlessly smooth motion without stutters */
         --ease-standard: ease-in-out;
     }
 
@@ -127,13 +130,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--bg-color);
-
-        /* Adjusted duration to finish by 4.4s */
-        animation: finalizeColors 1.4s;
-        animation-delay: 2.5s;
-        /* Keep end state */
-        animation-fill-mode: forwards;
+        background-color: #fbf9f9;
+        animation: finalizeBg 0.5s ease-in-out 1.3s forwards;
     }
 
     svg {
@@ -141,6 +139,8 @@
         max-width: 400px;
         height: auto;
         overflow: visible;
+        fill: #231f20;
+        animation: finalizeLogo 0.5s ease-in-out 1.3s forwards;
     }
 
     /* Initialer Zustand */
@@ -150,7 +150,6 @@
     #Fuss,
     #Stern {
         opacity: 0;
-        fill: var(--logo-color);
     }
 
     /* 1. STAMM */
@@ -172,7 +171,7 @@
         stroke-dasharray: 400;
         stroke-dashoffset: 400;
         animation: drawStroke var(--speed-c-top) var(--ease-standard) forwards;
-        animation-delay: 0.5s; /* Major Overlap (Stamm ends at 0.9s) */
+        animation-delay: 0.2s; /* Major Overlap */
     }
 
     /* 3. C-ZU-K */
@@ -186,21 +185,21 @@
         stroke-dasharray: 500;
         stroke-dashoffset: 500;
         animation: drawStroke var(--speed-c-zu-k) var(--ease-standard) forwards;
-        animation-delay: 1.2s; /* Major Overlap (C-Top ends at 1.7s) */
+        animation-delay: 0.5s; /* Major Overlap */
     }
 
     /* 4. FUSS */
     #Fuss {
         clip-path: inset(0 0 100% 0);
         animation: drawDown var(--speed-fuss) var(--ease-standard) forwards;
-        animation-delay: 2.2s; /* Overlap (C-zu-K ends at 2.7s) */
+        animation-delay: 1.0s; /* Overlap */
     }
 
     /* 5. STERN */
     #Stern {
         transform-origin: 5px 45px;
         animation: scaleIn var(--speed-stern) var(--ease-standard) forwards;
-        animation-delay: 2.6s; /* Overlap (Fuss ends at 2.9s) */
+        animation-delay: 1.2s; /* Overlap */
     }
 
     /* --- KEYFRAMES --- */
@@ -228,15 +227,15 @@
         }
     }
 
-    /* Keyframe for the final color change with start and end points */
-    @keyframes finalizeColors {
-        from {
-            --bg-color: #fbf9f9;
-            --logo-color: #231f20;
-        }
+    @keyframes finalizeBg {
         to {
-            --bg-color: #231f20; /* Schwarz */
-            --logo-color: #d3546d; /* Rosa (HotPink) */
+            background-color: #231f20; /* Schwarz */
+        }
+    }
+
+    @keyframes finalizeLogo {
+        to {
+            fill: #d3546d; /* Rosa */
         }
     }
 </style>
