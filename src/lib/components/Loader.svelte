@@ -6,9 +6,9 @@
     let isVisible = $state(true);
     let minTimeElapsed = $state(false);
 
-    // Total animation duration + buffer (1.8s)
-    const MIN_DURATION = 1800;
-    const MAX_DURATION = 2500;
+    // Total animation duration + buffer (1.1s)
+    const MIN_DURATION = 1100;
+    const MAX_DURATION = 1500;
 
     onMount(() => {
         const minTimer = setTimeout(() => {
@@ -48,7 +48,7 @@
 </script>
 
 {#if isVisible}
-    <div class="loader-overlay" transition:fade={{ duration: 800 }}>
+    <div class="loader-overlay" transition:fade={{ duration: 400 }}>
         <svg
             viewBox="0 0 82 50"
             version="1.1"
@@ -110,11 +110,11 @@
 
 <style>
     :root {
-        --speed-stamm: 0.6s;
-        --speed-c-top: 0.8s;
-        --speed-c-zu-k: 0.9s;
-        --speed-fuss: 0.6s;
-        --speed-stern: 0.4s;
+        --speed-stamm: 0.35s;
+        --speed-c-top: 0.45s;
+        --speed-c-zu-k: 0.5s;
+        --speed-fuss: 0.35s;
+        --speed-stern: 0.25s;
 
         /* Back to ease-in-out for a classic, flawlessly smooth motion without stutters */
         --ease-standard: ease-in-out;
@@ -131,7 +131,7 @@
         justify-content: center;
         align-items: center;
         background-color: #fbf9f9;
-        animation: finalizeBg 0.5s ease-in-out 1.3s forwards;
+        animation: finalizeBg 0.3s ease-in-out 0.8s forwards;
     }
 
     svg {
@@ -140,7 +140,7 @@
         height: auto;
         overflow: visible;
         fill: #231f20;
-        animation: finalizeLogo 0.5s ease-in-out 1.3s forwards;
+        animation: finalizeLogo 0.3s ease-in-out 0.8s forwards;
     }
 
     /* Initialer Zustand */
@@ -157,7 +157,7 @@
         opacity: 1;
         clip-path: inset(0 0 100% 0);
         animation: drawDown var(--speed-stamm) var(--ease-standard) forwards;
-        animation-delay: 0.1s;
+        animation-delay: 0.05s;
     }
 
     /* 2. C-TOP */
@@ -171,7 +171,7 @@
         stroke-dasharray: 400;
         stroke-dashoffset: 400;
         animation: drawStroke var(--speed-c-top) var(--ease-standard) forwards;
-        animation-delay: 0.2s; /* Major Overlap */
+        animation-delay: 0.1s; /* Major Overlap */
     }
 
     /* 3. C-ZU-K */
@@ -185,21 +185,21 @@
         stroke-dasharray: 500;
         stroke-dashoffset: 500;
         animation: drawStroke var(--speed-c-zu-k) var(--ease-standard) forwards;
-        animation-delay: 0.5s; /* Major Overlap */
+        animation-delay: 0.3s; /* Major Overlap */
     }
 
     /* 4. FUSS */
     #Fuss {
         clip-path: inset(0 0 100% 0);
         animation: drawDown var(--speed-fuss) var(--ease-standard) forwards;
-        animation-delay: 1.0s; /* Overlap */
+        animation-delay: 0.6s; /* Overlap */
     }
 
     /* 5. STERN */
     #Stern {
         transform-origin: 5px 45px;
         animation: scaleIn var(--speed-stern) var(--ease-standard) forwards;
-        animation-delay: 1.2s; /* Overlap */
+        animation-delay: 0.7s; /* Overlap */
     }
 
     /* --- KEYFRAMES --- */
