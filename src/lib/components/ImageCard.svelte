@@ -31,7 +31,7 @@
     <div class="actions">
       <a href="/projects?id={projectId}"><button>Mehr darüber</button></a>
       {#if link != "#"}
-        <a href={link}><button class="purple-button">Zur Website</button></a>
+        <a href={link} target="_blank" rel="noopener noreferrer"><button class="purple-button">Zur Website</button></a>
       {/if}
     </div>
   </div>

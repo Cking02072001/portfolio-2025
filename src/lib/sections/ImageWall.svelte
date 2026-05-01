@@ -26,6 +26,27 @@
         { top: 80, left: 70, speed: 0.15, width: 240 }, // Bottom Right (Index 5)
         { top: 25, left: 50, speed: -0.05, width: 180 }  // Top Center-ish (Index 6)
     ];
+
+    let words = $derived(text.split(" "));
+    let activeIndices = $state([]);
+
+    function handleHover() {
+        if (words.length === 0) return;
+        let count = Math.floor(Math.random() * 2) + 1; // 1 or 2 words
+        if (count > words.length) count = words.length;
+        let newIndices = [];
+        let available = Array.from({length: words.length}, (_, i) => i);
+        for(let i=0; i<count; i++) {
+            let randIdx = Math.floor(Math.random() * available.length);
+            newIndices.push(available[randIdx]);
+            available.splice(randIdx, 1);
+        }
+        activeIndices = newIndices;
+    }
+
+    function handleLeave() {
+        activeIndices = [];
+    }
 </script>
 
 <svelte:window bind:scrollY={scrollY} />
@@ -47,8 +68,14 @@
     {/each}
 
     <!-- Centered Content -->
-    <div class="hero-content">
-        <h1>{text}</h1>
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
+    <div class="hero-content" onmouseenter={handleHover} onmouseleave={handleLeave}>
+        <h1>
+            {#each words as word, i}
+                <span class:highlight={activeIndices.includes(i)}>{word}</span>
+                {#if i < words.length - 1}{" "}{/if}
+            {/each}
+        </h1>
     </div>
 
 </section>
@@ -77,6 +104,16 @@
             line-height: 1.1;
             max-width: 900px;
             margin: 0 auto;
+        }
+
+        span {
+            display: inline-block;
+            transition: all 1.5s ease;
+        }
+        
+        span.highlight {
+            font-style: italic;
+            color: #722F37; /* Bordeaux */
         }
     }
 
