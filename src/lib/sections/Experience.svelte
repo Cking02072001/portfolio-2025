@@ -152,9 +152,10 @@
     @media (max-width: 900px) {
         .experience-section {
             grid-template-columns: 1fr; /* Stack columns */
-            padding: 100px 20px;
+            min-height: auto;
+            padding: 60px 20px;
             padding-top: 0;
-            gap: var(--spacing-80);
+            gap: var(--spacing-40);
         }
 
         .middle-col, .right-col {

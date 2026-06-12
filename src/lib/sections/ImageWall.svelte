@@ -6,13 +6,13 @@
         text = "Trust me with your websites",
         typedWords = ["websites", "branding", "socials", "print"],
         images = [
-            "/Photos/CK/ImageWall05.png",
-            "Photos/CK/ImageWall01.png",
-            "Photos/CK/ImageWall07.png",
-            "Photos/CK/ImageWall03.png",
-            "Photos/CK/ImageWall04.png",
+            "/Photos/CK/ImageWall05.jpg",
+            "Photos/CK/ImageWall01.jpg",
+            "Photos/CK/ImageWall07.jpg",
+            "Photos/CK/ImageWall03.jpg",
+            "Photos/CK/ImageWall04.jpg",
             "",
-            "Photos/CK/ImageWall06.png"
+            "Photos/CK/ImageWall06.jpg"
         ]
     } = $props();
 

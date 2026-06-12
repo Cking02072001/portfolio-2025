@@ -1374,16 +1374,50 @@
 
     @media (max-width: 768px) {
         .scrapbook-section {
-            padding: 80px 16px;
-            gap: 24px;
+            padding: 48px 12px 60px;
+            gap: 16px;
         }
 
+        .title-column h1 { font-size: 40px; }
         .title-hint { display: none; }
 
-        .tools { gap: 8px; }
+        // Werkzeuge: kompakte horizontale Leiste
+        .tools {
+            gap: 10px;
+            padding: 10px 12px;
+            background: rgba(39,39,39,0.04);
+            border-radius: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-        .tool svg { width: 64px; height: auto; }
+        .tool svg { width: 56px; height: auto; }
 
-        .page-nav button { font-size: 18px; }
+        // Seitenleiste: horizontal scrollbar
+        .side {
+            overflow-x: auto;
+            gap: 20px;
+            padding: 8px 4px 4px;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            &::-webkit-scrollbar { display: none; }
+        }
+
+        .stack-wrap, .pad-wrap, .tape-wrap, .sheet-wrap {
+            flex-shrink: 0;
+        }
+
+        .hint { font-size: 14px; }
+
+        // Navigation
+        .page-nav {
+            gap: var(--spacing-20);
+
+            button { font-size: 16px; }
+        }
+
+        .add-page { display: none; }
     }
 </style>

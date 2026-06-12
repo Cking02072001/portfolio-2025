@@ -20,7 +20,7 @@
   <div class="header">
     <div class="title-wrap">
       <h1>Best of Cases</h1>
-      <Doodle variant="circle" size={300} rotate={-2} style="position:absolute; top:-24px; left:-34px; z-index:0;" />
+      <span class="circle-doodle"><Doodle variant="circle" size={300} rotate={-2} style="position:absolute; top:-24px; left:-34px; z-index:0;" /></span>
       <span class="hand-note">
         <Doodle variant="arrow" size={50} rotate={150} flip style="vertical-align:middle;" />
         meine lieblingsstücke
@@ -106,8 +106,13 @@
     white-space: nowrap;
   }
 
+  .circle-doodle {
+    display: contents;
+  }
+
   @media (max-width: 900px) {
     .hand-note { display: none; }
+    .circle-doodle { display: none; }
   }
 
   h1 {

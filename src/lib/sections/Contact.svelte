@@ -169,12 +169,23 @@
 
         .left-content, .right-content {
             width: 100%;
-            justify-content: center; 
+            align-items: center;
+            justify-content: center;
             text-align: center;
             padding: 0;
         }
 
+        .contact-stack {
+            align-items: center;
+            width: 100%;
+        }
+
+        .imprint-link {
+            align-self: center;
+        }
+
         .links-container {
+            justify-content: center;
             gap: var(--spacing-40);
         }
 
