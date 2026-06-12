@@ -7,9 +7,9 @@
     import ImageWall from '$lib/sections/ImageWall.svelte';
     import Contact from '$lib/sections/Contact.svelte';
     import Experience from '$lib/sections/Experience.svelte';
-    import Footer from '$lib/sections/Footer.svelte';
     import Hero from '$lib/sections/Hero.svelte';
     import WIP from '$lib/sections/WIP.svelte';
+    import Scrapbook from '$lib/sections/Scrapbook.svelte';
 </script>
  
 <div class="demo-container">
@@ -22,6 +22,7 @@
     </div>
     <Experience />
     <!-- <TextCenter /> -->
+    <Scrapbook />
     <div id="meine-arbeiten">
     <Projects />
     </div>
@@ -29,7 +30,6 @@
     <div id="kontakt">
       <Contact />
     </div>
-    <Footer />
 
 </div>
 

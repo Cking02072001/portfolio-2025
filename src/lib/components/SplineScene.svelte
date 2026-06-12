@@ -1,34 +1,44 @@
 <script lang="ts">
-    import { Application } from "@splinetool/runtime";
     import { onMount } from "svelte";
-    import { loadingState } from "$lib/stores/loading.svelte";
 
     let { sceneUrl, className = "" } = $props();
 
-    let canvas: HTMLCanvasElement;
+    let canvas = $state<HTMLCanvasElement | undefined>(undefined);
+    let wrapper = $state<HTMLDivElement | undefined>(undefined);
     let isLoaded = $state(false);
+    let hasStarted = $state(false);
 
     onMount(() => {
-        // Reset loading state on mount
-        loadingState.isLoading = true;
+        if (!wrapper) return;
 
-        if (canvas && sceneUrl) {
-            const app = new Application(canvas);
-            app.load(sceneUrl).then(() => {
-                isLoaded = true;
-                loadingState.isLoading = false;
-            });
-        } else {
-            // Fallback if no canvas/url
-            loadingState.isLoading = false;
-        }
+        const obs = new IntersectionObserver(
+            async ([entry]) => {
+                if (!entry.isIntersecting || hasStarted) return;
+                hasStarted = true;
+                obs.disconnect();
+
+                const { Application } = await import("@splinetool/runtime");
+                if (canvas && sceneUrl) {
+                    const app = new Application(canvas);
+                    await app.load(sceneUrl);
+                    isLoaded = true;
+                }
+            },
+            { rootMargin: "200px" }
+        );
+
+        obs.observe(wrapper);
+        return () => obs.disconnect();
     });
 </script>
 
-<div class="spline-wrapper {className}">
-    <canvas bind:this={canvas} class="spline-canvas"></canvas>
+<div class="spline-wrapper {className}" bind:this={wrapper}>
+    <canvas bind:this={canvas} class="spline-canvas" class:hidden={!hasStarted}></canvas>
 
-    <!-- White rectangle that appears after load to cover bottom right -->
+    {#if !isLoaded}
+        <div class="placeholder" aria-hidden="true"></div>
+    {/if}
+
     {#if isLoaded}
         <div class="cover-rect"></div>
     {/if}
@@ -48,6 +58,15 @@
         display: block;
         background-color: var(--color-white);
         outline: none;
+
+        &.hidden { opacity: 0; }
+    }
+
+    .placeholder {
+        position: absolute;
+        inset: 0;
+        background: var(--color-white);
+        pointer-events: none;
     }
 
     .cover-rect {

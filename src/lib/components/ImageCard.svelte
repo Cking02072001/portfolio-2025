@@ -1,5 +1,6 @@
 <script>
   import MandarfnerHofSvg from "$lib/svg/MandarfnerHofSvg.svelte";
+  import Doodle from "$lib/components/Doodle.svelte";
 
   let {
     imageSrc = "https://placehold.co/400x600",
@@ -8,18 +9,45 @@
     description = "Description text goes here.",
     projectId = "Action 2",
     link = "#",
+    accent = "sparkle",
   } = $props();
 
+  let accentVariant = $derived(
+    /** @type {'arrow' | 'underline' | 'sparkle' | 'circle' | 'spiral'} */ (accent),
+  );
+
   let isHovered = $state(false);
+
+  // 3D-Tilt: Karte folgt dem Mauszeiger
+  let cardEl = /** @type {HTMLDivElement | undefined} */ (undefined);
+  let tilt = $state({ rx: 0, ry: 0 });
+
+  /** @param {MouseEvent} e */
+  function onTiltMove(e) {
+    if (!cardEl) return;
+    const r = cardEl.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    tilt = { rx: -py * 5, ry: px * 5 };
+  }
+
+  function onLeave() {
+    isHovered = false;
+    tilt = { rx: 0, ry: 0 };
+  }
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   class="image-card"
+  bind:this={cardEl}
+  style="transform: perspective(900px) rotateX({tilt.rx}deg) rotateY({tilt.ry}deg);"
   onmouseenter={() => (isHovered = true)}
-  onmouseleave={() => (isHovered = false)}
+  onmousemove={onTiltMove}
+  onmouseleave={onLeave}
 >
   <div class="image-container">
+    <Doodle variant={accentVariant} size={48} color="#923c56" rotate={-12} style="position:absolute; top:4px; left:4px; z-index:5;" />
     <div class="card-image-wrapper">
       <img src={isHovered ? hoverImageSrc : imageSrc} alt={title} />
     </div>
@@ -27,7 +55,10 @@
 
   <div class="content">
     <p>{description}</p>
-    <h3>{title}</h3>
+    <div class="title-line">
+      <h3>{title}</h3>
+      <Doodle variant="underline" size={110} color="#923c56" style="margin:-14px 0 0 2px;" />
+    </div>
     <div class="actions">
       <a href="/projects?id={projectId}"><button>Mehr darüber</button></a>
       {#if link != "#"}
@@ -56,7 +87,13 @@
     transition:
       background-color 0.3s ease,
       color 0.3s ease,
-      border-color 0.3s ease;
+      border-color 0.3s ease,
+      transform 0.15s ease-out;
+    will-change: transform;
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none !important;
+    }
 
     &:hover {
       background-color: var(--color-black);
@@ -152,6 +189,12 @@
 
   h3 {
     margin: 0;
+  }
+
+  .title-line {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   button {

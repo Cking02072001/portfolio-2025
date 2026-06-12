@@ -68,8 +68,55 @@
         top: 0,
         behavior: "smooth",
       });
+      rainStickers();
       closeMenu();
     }
+  }
+
+  // Easter Egg: Sticker-Regen beim Klick aufs Logo
+  interface RainPiece {
+    id: number;
+    x: number;
+    delay: number;
+    dur: number;
+    rot: number;
+    kind: string;
+    color: string;
+    size: number;
+  }
+
+  let rain = $state<RainPiece[]>([]);
+  let rainTimer: ReturnType<typeof setTimeout> | undefined;
+
+  function shapeFor(kind: string, color: string): string {
+    switch (kind) {
+      case "star":
+        return `<polygon points="20,3 24.5,14.5 37,14.5 27,22 30.5,34 20,27 9.5,34 13,22 3,14.5 15.5,14.5" fill="${color}"/>`;
+      case "heart":
+        return `<path d="M20,34C20,34,5,23,5,14C5,9,9,5.5,13.5,5.5C16.5,5.5,18.5,7.5,20,10C21.5,7.5,23.5,5.5,26.5,5.5C31,5.5,35,9,35,14C35,23,20,34,20,34Z" fill="${color}"/>`;
+      case "sparkle":
+        return `<path d="M20,4L21.5,18.5L36,20L21.5,21.5L20,36L18.5,21.5L4,20L18.5,18.5Z" fill="${color}"/>`;
+      default:
+        return `<circle cx="20" cy="20" r="13" fill="none" stroke="${color}" stroke-width="3" stroke-dasharray="4 6" stroke-linecap="round"/>`;
+    }
+  }
+
+  function rainStickers() {
+    const kinds = ["star", "heart", "sparkle", "circle"];
+    const colors = ["#923c56", "#d3546d", "#272727"];
+    const now = Date.now();
+    rain = Array.from({ length: 28 }, (_, i) => ({
+      id: now + i,
+      x: Math.random() * 100,
+      delay: Math.random() * 0.6,
+      dur: 2.4 + Math.random() * 1.6,
+      rot: Math.random() * 480 - 240,
+      kind: kinds[i % kinds.length],
+      color: colors[i % colors.length],
+      size: 16 + Math.random() * 18,
+    }));
+    clearTimeout(rainTimer);
+    rainTimer = setTimeout(() => (rain = []), 5000);
   }
 </script>
 
@@ -136,6 +183,20 @@
     </div>
   </div>
 </nav>
+
+{#if rain.length}
+  <div class="sticker-rain" aria-hidden="true">
+    {#each rain as piece (piece.id)}
+      <span
+        style="left:{piece.x}vw; animation-duration:{piece.dur}s; animation-delay:{piece.delay}s; --rot:{piece.rot}deg;"
+      >
+        <svg viewBox="0 0 40 40" width={piece.size} height={piece.size}>
+          {@html shapeFor(piece.kind, piece.color)}
+        </svg>
+      </span>
+    {/each}
+  </div>
+{/if}
 
 <!-- Full-Screen Overlay Menu -->
 {#if isMenuOpen}
@@ -226,6 +287,33 @@
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+  }
+
+  /* Sticker-Regen (Logo Easter Egg) */
+  .sticker-rain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 200;
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      top: -50px;
+      line-height: 0;
+      animation: stickerFall linear forwards;
+    }
+  }
+
+  @keyframes stickerFall {
+    from {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(115vh) rotate(var(--rot));
+      opacity: 0.85;
+    }
   }
 
   /* Mobile Overlay */

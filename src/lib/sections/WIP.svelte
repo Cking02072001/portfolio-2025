@@ -1,5 +1,6 @@
 <script lang="ts">
     import WIPCard from '$lib/components/WIPCard.svelte';
+    import Doodle from '$lib/components/Doodle.svelte';
     import { wipProjects } from '$lib/data/projects';
 
     let scrollContainer: HTMLDivElement;
@@ -14,6 +15,7 @@
 <section class="wips-section">
     <div class="title-column">
         <h1>Bits & Pieces</h1>
+        <Doodle variant="sparkle" size={40} color="#fbf9f9" style="position:absolute; top:18%; left:50%; transform:translateX(-50%);" />
     </div>
     
     <div class="content-column">
@@ -56,6 +58,7 @@
     }
 
     .title-column {
+        position: relative;
         width: 15vw; /* Reserved width for the vertical title */
         display: flex;
         align-items: center;

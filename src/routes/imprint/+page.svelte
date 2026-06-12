@@ -1,3 +1,10 @@
+<svelte:head>
+  <title>Impressum & Datenschutz — Celina Maria Kammerhofer</title>
+  <meta name="description" content="Impressum und Datenschutzerklärung von Celina Maria Kammerhofer, Designerin aus St. Leonhard, Österreich." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://celina.design/imprint" />
+</svelte:head>
+
 <script>
     import Marquee from "$lib/components/Marquee.svelte";
 
@@ -5,7 +12,6 @@
 
     import Navbar from "$lib/components/Navbar.svelte";
     import Contact from "$lib/sections/Contact.svelte";
-    import Footer from "$lib/sections/Footer.svelte";
 
 </script>
 <div class="legal-page">
@@ -31,7 +37,7 @@
 
             <div class="address-block">
                 <strong>Media Proprietor & Publisher</strong><br>
-                Celina Kammerhofer<br>
+                Celina Maria Kammerhofer<br>
                 Mandarfen 81 <br>
                 6481 St. Leonhard <br>
                 Austria
@@ -47,7 +53,14 @@
             <div class="purpose-block">
                 <h3>Purpose of the Website</h3>
                 <p>
-                    Online portfolio for the presentation of design and coding projects. 
+                    Online portfolio for the presentation of design and coding projects.
+                </p>
+            </div>
+
+            <div class="development-block">
+                <h3>Development</h3>
+                <p>
+                    Initial development by <a href="http://sl1.at" target="_blank" rel="noopener noreferrer">Sascha Lorenz</a>. The site was co-developed, customized and adapted by me.
                 </p>
             </div>
 
@@ -101,7 +114,6 @@
 <div id="kontakt">
     <Contact />
   </div>
-  <Footer />
 <style lang="scss">
     .legal-page {
         background-color: var(--color-white);

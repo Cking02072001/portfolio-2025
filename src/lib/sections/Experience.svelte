@@ -1,6 +1,7 @@
 <script lang="ts">
     import SplineScene from "$lib/components/SplineScene.svelte";
-    let { 
+    import Doodle from "$lib/components/Doodle.svelte";
+    let {
         leftSceneUrl = "https://prod.spline.design/Zns6jhy-8YuFaQfU/scene.splinecode",
         rightSceneUrl = "https://prod.spline.design/wUJckGf-jJ5Z52Pf/scene.splinecode"
     } = $props();
@@ -18,6 +19,7 @@
     <!-- Middle Column: H3 + Text -->
     <div class="column middle-col">
         <h3>Ausbildung</h3>
+        <Doodle variant="underline" size={140} style="margin:-22px 0 -6px 2px;" />
         <div class="experience-element">
             <p class="fat-text">New Design University, 
                 <br>Bachelor of Arts
@@ -43,6 +45,7 @@
     <div class="column right-col">
         <div class="text-group">
             <h3>Experience</h3>
+            <Doodle variant="underline" size={140} color="#d3546d" style="margin:-22px 0 -6px 2px;" />
             <div class="experience-element">
                 <p class="fat-text">Freelance Design
                 </p>

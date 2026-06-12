@@ -2,8 +2,22 @@
   import favicon from "$lib/assets/favicon.svg";
   import "../reset.css";
   import Loader from "$lib/components/Loader.svelte";
+  import { onNavigate } from "$app/navigation";
 
   let { children } = $props();
+
+  // Sanfter Crossfade zwischen Routen (View Transitions API)
+  // Bei Zurück/Vor (popstate) keine Transition — sonst geht die
+  // Scroll-Position verloren.
+  onNavigate((navigation) => {
+    if (!document.startViewTransition || navigation.type === "popstate") return;
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
+    });
+  });
 </script>
 
 <svelte:head>
@@ -70,6 +84,60 @@
       font-family: var(--font-reading);
       color: var(--color-black);
       background-color: var(--color-white);
+    }
+
+    /* Custom cursor: burgundy dot, Ring auf Klickbarem */
+    html,
+    body {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23923c56' fill-opacity='0.5'/%3E%3C/svg%3E") 16 16, auto;
+    }
+
+    a,
+    button {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%23923c56' stroke-width='3' stroke-opacity='0.7'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%23923c56' fill-opacity='0.7'/%3E%3C/svg%3E") 20 20, pointer !important;
+    }
+
+    /* Weißer Cursor auf Burgundy-Flächen */
+    .contact-section {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23fbf9f9' fill-opacity='0.7'/%3E%3C/svg%3E") 16 16, auto;
+    }
+
+    .contact-section a,
+    .contact-section button {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%23fbf9f9' stroke-width='3' stroke-opacity='0.9'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%23fbf9f9' fill-opacity='0.9'/%3E%3C/svg%3E") 20 20, pointer !important;
+    }
+
+    /* Sehr subtile Noise-Textur über der ganzen Seite */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body::after { display: none; }
+    }
+
+    input,
+    textarea,
+    [contenteditable='true'] {
+      cursor: text;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0.35s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation: none;
+      }
     }
 
     h1 {

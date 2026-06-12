@@ -1,5 +1,7 @@
 <script>
-    let { 
+    import Doodle from '$lib/components/Doodle.svelte';
+
+    let {
         title = "Let's Talk",
         email = "hi@celina.design",
         instagramUrl = "https://www.instagram.com/cmk.fig"
@@ -8,12 +10,18 @@
 
 <section class="contact-section">
     <div class="left-content">
+        <Doodle variant="sparkle" size={38} color="#fbf9f9" style="position: absolute; top: -36px; left: 2px;" />
         <h1>Let’s create <br><i>with purpose.</i></h1>
+        <span class="hand-note">
+            schreib mir, ich freu mich wirklich
+            <Doodle variant="arrow" size={56} color="#fbf9f9" rotate={18} style="vertical-align: middle;" />
+        </span>
     </div>
 
     <div class="right-content">
+      <div class="contact-stack">
         <div class="links-container">
-            
+
             <!-- Email Link -->
             <a href="mailto:{email}" class="icon-link">
                 <div class="icon-circle">
@@ -38,6 +46,9 @@
             </a>
 
         </div>
+
+        <a href="/imprint" class="imprint-link">Impressum &amp; Datenschutz</a>
+      </div>
     </div>
 </section>
 
@@ -52,17 +63,55 @@
     }
 
     .left-content {
+        position: relative;
         width: 50%;
         display: flex;
-        justify-content: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: var(--spacing-20);
+    }
+
+    .hand-note {
+        font-family: 'Caveat', cursive;
+        font-size: 26px;
+        color: var(--color-white);
+        opacity: 0.85;
+        display: inline-flex;
         align-items: center;
+        gap: 8px;
     }
 
     .right-content {
         width: 50%;
         display: flex;
-        justify-content: flex-end; 
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
         padding-right: 5vw;
+    }
+
+    .contact-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: fit-content;
+    }
+
+    .imprint-link {
+        align-self: flex-start;
+        margin-top: var(--spacing-80);
+        font-family: var(--font-heading);
+        font-size: 20px;
+        color: var(--color-white);
+        text-decoration: none;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
     }
 
     h1 {
@@ -80,7 +129,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: var(--spacing-20);
+        gap: 4px;
         text-decoration: none;
         color: var(--color-white);
         font-family: var(--font-heading);

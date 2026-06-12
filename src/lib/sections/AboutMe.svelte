@@ -1,9 +1,10 @@
 <script lang="ts">
     import SplineScene from "$lib/components/SplineScene.svelte";
+    import Doodle from "$lib/components/Doodle.svelte";
 
     let { 
         title = "Design with Purpose",
-        subtitle = "by Celina Kammerhofer",
+        subtitle = "by Celina Maria Kammerhofer",
         description = "Digital Native, die ganzheitlich und medienübergreifend denkt. Vom haptischen Erlebnis bis zur responsiven Website verbinde ich reine Ästhetik mit strategischem Marketing. ",
        Text = "Als multidisziplinäre Designerin entwickle ich visuelle Identitäten, die auf allen Kanälen funktionieren. Mit fundiertem Wissen in Branding, Social Media und SEO sorge ich dafür, dass deine Vision digital Realität wird und deine Marke sichtbar bleibt.",
         buttonText = "View Projects"
@@ -51,11 +52,17 @@
     <div class="left-content">
         <h1>{title}</h1>
         <h3>{subtitle}</h3>
+        <Doodle variant="underline" size={170} style="margin: -28px 0 -20px 2px;" />
         <p>{description}</p>
         <p>{Text}</p>
+        <span class="hand-note">
+            <Doodle variant="spiral" size={42} rotate={-8} />
+            kaffee? immer.
+        </span>
     </div>
     
     <div class="right-content">
+        <Doodle variant="arrow" size={84} rotate={-16} style="position: absolute; top: 18%; left: 2%; z-index: 2;" />
         <SplineScene sceneUrl="https://prod.spline.design/BxSFDunERx8KsEfN/scene.splinecode" />
     </div>
 </section>
@@ -112,6 +119,15 @@
         line-height: 1.6;
         max-width: 500px;
         margin: 0;
+    }
+
+    .hand-note {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Caveat', cursive;
+        font-size: 24px;
+        color: var(--color-purple);
     }
 
     button {

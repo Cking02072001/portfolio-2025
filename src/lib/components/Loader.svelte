@@ -1,49 +1,23 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { fade } from "svelte/transition";
-    import { loadingState } from "$lib/stores/loading.svelte";
 
     let isVisible = $state(true);
-    let minTimeElapsed = $state(false);
 
-    // Total animation duration + buffer (1.1s)
-    const MIN_DURATION = 1100;
     const MAX_DURATION = 1500;
 
     onMount(() => {
-        const minTimer = setTimeout(() => {
-            minTimeElapsed = true;
-        }, MIN_DURATION);
-
-        // Force hide at MAX_DURATION regardless of loading state
-        const maxTimer = setTimeout(() => {
+        // Hide after animation is done — don't wait for Spline
+        const timer = setTimeout(() => {
             isVisible = false;
         }, MAX_DURATION);
 
-        return () => {
-            clearTimeout(minTimer);
-            clearTimeout(maxTimer);
-        };
+        return () => clearTimeout(timer);
     });
 
     $effect(() => {
-        if (!loadingState.isLoading && minTimeElapsed && isVisible) {
-            setTimeout(() => {
-                isVisible = false;
-            }, 100);
-        }
-    });
-
-    $effect(() => {
-        if (isVisible) {
-            document.body.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-        }
-
-        return () => {
-            document.body.style.overflow = "";
-        };
+        document.body.style.overflow = isVisible ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
     });
 </script>
 

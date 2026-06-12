@@ -1,6 +1,10 @@
 <script>
-    let { 
+    import { onMount } from 'svelte';
+    import Doodle from '$lib/components/Doodle.svelte';
+
+    let {
         text = "Trust me with your websites",
+        typedWords = ["websites", "branding", "socials", "print"],
         images = [
             "/Photos/CK/ImageWall05.png",
             "Photos/CK/ImageWall01.png",
@@ -27,8 +31,58 @@
         { top: 25, left: 50, speed: -0.05, width: 180 }  // Top Center-ish (Index 6)
     ];
 
-    let words = $derived(text.split(" "));
-    let activeIndices = $state([]);
+    // Letztes Wort wird vom Typewriter ersetzt
+    let words = $derived(text.split(" ").slice(0, -1));
+    let activeIndices = $state(/** @type {number[]} */ ([]));
+
+    // ── Typewriter ────────────────────────────────────────────────
+    let typedText = $state("");
+
+    onMount(() => {
+        let wordIdx = 0;
+        let charIdx = 0;
+        let deleting = false;
+        let timer = /** @type {ReturnType<typeof setTimeout> | undefined} */ (undefined);
+
+        function tick() {
+            const word = typedWords[wordIdx];
+            if (!deleting) {
+                charIdx++;
+                typedText = word.slice(0, charIdx);
+                if (charIdx === word.length) {
+                    deleting = true;
+                    timer = setTimeout(tick, 2400);
+                    return;
+                }
+                timer = setTimeout(tick, 90);
+            } else {
+                charIdx--;
+                typedText = word.slice(0, charIdx);
+                if (charIdx === 0) {
+                    deleting = false;
+                    wordIdx = (wordIdx + 1) % typedWords.length;
+                    timer = setTimeout(tick, 400);
+                    return;
+                }
+                timer = setTimeout(tick, 45);
+            }
+        }
+
+        timer = setTimeout(tick, 1200);
+        return () => clearTimeout(timer);
+    });
+
+    // ── Doppelklick: Polaroid neu entwickeln ─────────────────────
+    let developingIdx = $state(/** @type {number[]} */ ([]));
+
+    /** @param {number} i */
+    function redevelop(i) {
+        if (developingIdx.includes(i)) return;
+        developingIdx = [...developingIdx, i];
+        setTimeout(() => {
+            developingIdx = developingIdx.filter((x) => x !== i);
+        }, 1700);
+    }
 
     function handleHover() {
         if (words.length === 0) return;
@@ -56,25 +110,30 @@
     <!-- Background Images with Parallax -->
     {#each images.slice(0, 7) as src, i}
         {@const layout = scatterLayout[i]}
-        <div 
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <div
             class="scatter-image"
             style:top="{layout.top}%"
             style:left="{layout.left}%"
             style:width="{layout.width}px"
             style:transform="translate3d(0, {scrollY * layout.speed}px, 0)"
+            ondblclick={() => redevelop(i)}
         >
-            <img {src} alt="" />
+            <img {src} alt="" class:developing={developingIdx.includes(i)} draggable="false" />
         </div>
     {/each}
 
     <!-- Centered Content -->
     <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="hero-content" onmouseenter={handleHover} onmouseleave={handleLeave}>
+        <Doodle variant="sparkle" size={44} style="position: absolute; top: -30px; right: -14px;" />
+        <Doodle variant="sparkle" size={30} rotate={-24} color="#d3546d" style="position: absolute; bottom: -24px; left: -6px;" />
         <h1>
             {#each words as word, i}
                 <span class:highlight={activeIndices.includes(i)}>{word}</span>
-                {#if i < words.length - 1}{" "}{/if}
+                {" "}
             {/each}
+            <span class="typed">{typedText}<span class="caret" aria-hidden="true"></span></span>
         </h1>
     </div>
 
@@ -93,6 +152,7 @@
     }
 
     .hero-content {
+        position: relative;
         z-index: 10; /* Ensures text is above images */
         text-align: center;
         padding: 0 20px;
@@ -115,15 +175,35 @@
             font-style: italic;
             color: #722F37; /* Bordeaux */
         }
+
+        .typed {
+            font-style: italic;
+            color: #722F37;
+        }
+
+        .caret {
+            display: inline-block;
+            width: 4px;
+            height: 0.85em;
+            margin-left: 6px;
+            vertical-align: baseline;
+            background: #722F37;
+            animation: caretBlink 1.1s steps(1) infinite;
+        }
+    }
+
+    @keyframes caretBlink {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
     }
 
     .scatter-image {
         position: absolute;
         z-index: 1; /* Behind text */
-        pointer-events: none; /* Allow clicking through images if needed */
         transition: transform 0.1s linear; /* Smooths out the scroll updates slightly */
         will-change: transform;
-        
+        user-select: none;
+
         img {
             width: 100%;
             height: auto;
@@ -132,7 +212,17 @@
             object-fit: cover;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             opacity: 0.8; /* Subtle transparency to help text readability */
+
+            &.developing {
+                animation: redevelop 1.6s ease forwards;
+            }
         }
+    }
+
+    @keyframes redevelop {
+        0%   { filter: grayscale(1) blur(5px) brightness(1.15) contrast(0.9); }
+        55%  { filter: grayscale(0.65) blur(1.5px) brightness(1.06); }
+        100% { filter: none; }
     }
 
     @media (max-width: 768px) {
