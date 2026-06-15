@@ -5,8 +5,8 @@
     let { 
         title = "Design with Purpose",
         subtitle = "by Celina Maria Kammerhofer",
-        description = "Digital Native, die ganzheitlich und medienübergreifend denkt. Vom haptischen Erlebnis bis zur responsiven Website verbinde ich reine Ästhetik mit strategischem Marketing. ",
-       Text = "Als multidisziplinäre Designerin entwickle ich visuelle Identitäten, die auf allen Kanälen funktionieren. Mit fundiertem Wissen in Branding, Social Media und SEO sorge ich dafür, dass deine Vision digital Realität wird und deine Marke sichtbar bleibt.",
+        description = "Designerin. Tirolerin. Zu ehrgeizig für ihren eigenen Seelenfrieden. Ich mache Branding, Web und Socials und hab dabei ein Faible für Dinge, die man anfassen will.",
+       Text = "Ich denke vom Logo bis zum Newsletter, von der Farbe bis zum Post. Mein Anspruch ist, dass deine Marke überall gleich klingt und gleich aussieht. Und zwar so, dass man sie wiedererkennt.",
         buttonText = "View Projects"
     } = $props();
 

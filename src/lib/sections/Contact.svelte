@@ -14,7 +14,6 @@
         <h1>Let’s create <br><i>with purpose.</i></h1>
         <span class="hand-note">
             schreib mir, ich freu mich wirklich
-            <Doodle variant="arrow" size={56} color="#fbf9f9" rotate={18} style="vertical-align: middle;" />
         </span>
     </div>
 
