@@ -276,6 +276,17 @@ export const wipProjects: Project[] = [
         hoverImage: "/Photos/S/Hovercard.jpg",
     },
     {
+        id: "Anger Alm",
+        tags: ["Projects", "Webdesign", "Brand & Logo"],
+        title: "Anger Alm",
+        shortDescription: "Komplettes Branddesign mit Identity, CD, Website und Animationen",
+        longDescription: "Manche Orte verdienen mehr als ein Logo. Die Anger Alm bekommt ein vollständiges Erscheinungsbild. Von der Markenidentität über das Corporate Design bis zur Website und animierten Elementen, die das Ganze zum Leben bringen. Alles aus einem Guss. Mehr folgt.",
+        mainImage: "/Photos/Anger Alm/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/Anger Alm/Card-Idle.jpg",
+        hoverImage: "/Photos/Anger Alm/Card-Hover.jpg"
+    },
+    {
         id: "Bäckelar Wirt",
         tags: ["Projects", "Webdesign", "Brandi & Logo"],
         title: "Bäckelar Wirt",
