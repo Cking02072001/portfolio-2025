@@ -95,15 +95,23 @@
 
     .right-content {
         width: 45%;
-        align-self: stretch;
-        min-height: 520px;
+        /* Eigene, stabile Höhe statt Mitwachsen mit der Textspalte.
+           Sonst verzerrt die Spline-Szene, sobald der Text länger wird. */
+        align-self: center;
+        /* Nahezu quadratische Bühne, damit die Szene bei jeder
+           Fensterbreite gleich proportioniert bleibt */
+        aspect-ratio: 1 / 1;
+        max-height: 76vh;
+        min-height: 360px;
         position: relative;
         /* Center the 3D scene in the available space */
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 20px; /* Prevent touching edges */
-        padding-left: 100px;
+        /* Skaliert mit, sonst frisst der Abstand auf schmalen Fenstern
+           einen Grossteil der Spaltenbreite */
+        padding-left: clamp(16px, 4vw, 100px);
     }
 
     h1 {
