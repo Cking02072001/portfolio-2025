@@ -8,6 +8,9 @@ node_modules
 /.svelte-kit
 /build
 
+# Originalbilder vor der Weboptimierung, bleiben lokal und gehen nicht ins Deploy
+/_bildarchiv
+
 # OS
 .DS_Store
 Thumbs.db

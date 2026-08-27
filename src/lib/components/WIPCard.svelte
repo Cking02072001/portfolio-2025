@@ -1,20 +1,27 @@
 <script>
-  let { 
-    imageSrc = "https://placehold.co/350x250", 
-    hoverImageSrc = "https://placehold.co/350x250/000000/FFFFFF", 
+  import Stamp from '$lib/components/Stamp.svelte';
+
+  let {
+    imageSrc = "https://placehold.co/350x250",
+    hoverImageSrc = "https://placehold.co/350x250/000000/FFFFFF",
     altText = "Work in Progress",
     projectId = "WIP-1",
+    inProgress = false,
   } = $props();
 </script>
 
 <div class="wip-card">
   <a href="/projects?id={projectId}">
   <!-- Main Image -->
-  <img src={imageSrc} alt={altText} class="main-img" />
-  
+  <img src={imageSrc} alt={altText} class="main-img" loading="lazy" decoding="async" />
+
   <!-- Hover Image (Overlay) -->
   {#if hoverImageSrc}
-    <img src={hoverImageSrc} alt={altText} class="hover-img" />
+    <img src={hoverImageSrc} alt="" class="hover-img" loading="lazy" decoding="async" />
+  {/if}
+
+  {#if inProgress}
+    <span class="stamp-slot"><Stamp /></span>
   {/if}
   </a>
 </div>
@@ -53,13 +60,29 @@
     opacity: 0;
   }
 
+  /* Stempel sitzt schief unten links auf der Karte */
+  .stamp-slot {
+    position: absolute;
+    left: 14px;
+    bottom: 16px;
+    z-index: 3;
+    line-height: 0;
+    pointer-events: none;
+    opacity: 0.9;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
   .wip-card:hover {
     .main-img {
       transform: scale(1.05);
     }
-    
+
     .hover-img {
       opacity: 1;
+      transform: scale(1.05);
+    }
+
+    .stamp-slot {
       transform: scale(1.05);
     }
   }

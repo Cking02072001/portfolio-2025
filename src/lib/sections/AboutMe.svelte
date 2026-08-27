@@ -71,7 +71,9 @@
 <style lang="scss">
     .split-hero {
         width: 100vw;
-        height: 100vh;
+        /* Wächst mit, wenn der Text bei niedrigen Fenstern mehr Platz braucht */
+        height: auto;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         background-color: var(--color-white);
@@ -79,20 +81,22 @@
     }
 
     .left-content {
-        width: 45%; 
-        height: 100%;
+        width: 45%;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        padding: 0 0 0 10vw; 
+        /* Luft oben und unten, damit nichts an der Navbar klebt */
+        padding: 90px 0 70px 10vw;
         gap: var(--spacing-40);
-        z-index: 1; 
+        z-index: 1;
     }
 
     .right-content {
-        width: 45%; 
-        height: 100%; 
+        width: 45%;
+        align-self: stretch;
+        min-height: 520px;
         position: relative;
         /* Center the 3D scene in the available space */
         display: flex;
@@ -104,12 +108,15 @@
 
     h1 {
         margin: 0;
+        /* Skaliert mit, damit die Zeile auf mittleren Fenstern nicht dreifach umbricht */
+        font-size: clamp(46px, 6.4vw, 80px);
         line-height: 1;
         color: var(--color-black);
     }
 
     h3 {
         margin: 0;
+        font-size: clamp(26px, 3vw, 40px);
         color: var(--color-purple);
     }
 

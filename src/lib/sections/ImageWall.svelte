@@ -4,7 +4,7 @@
 
     let {
         text = "Trust me with your websites",
-        typedWords = ["websites", "branding", "socials", "print"],
+        typedWords = ["websites", "branding", "socials", "print", "ki chatbots"],
         images = [
             "/Photos/CK/ImageWall05.jpg",
             "Photos/CK/ImageWall01.jpg",
@@ -109,6 +109,7 @@
     
     <!-- Background Images with Parallax -->
     {#each images.slice(0, 7) as src, i}
+        {#if src}
         {@const layout = scatterLayout[i]}
         <!-- svelte-ignore a11y_no_static_element_interactions -->
         <div
@@ -119,8 +120,9 @@
             style:transform="translate3d(0, {scrollY * layout.speed}px, 0)"
             ondblclick={() => redevelop(i)}
         >
-            <img {src} alt="" class:developing={developingIdx.includes(i)} draggable="false" />
+            <img {src} alt="" class:developing={developingIdx.includes(i)} draggable="false" loading="lazy" decoding="async" />
         </div>
+        {/if}
     {/each}
 
     <!-- Centered Content -->

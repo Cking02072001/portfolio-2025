@@ -22,7 +22,7 @@
         <div class="carousel-container" bind:this={scrollContainer}>
             {#each wipProjects as project}
                 <div class="card-wrapper">
-                    <WIPCard imageSrc={project.defaultImage} hoverImageSrc={project.hoverImage} altText={project.title} projectId={project.id} />
+                    <WIPCard imageSrc={project.defaultImage} hoverImageSrc={project.hoverImage} altText={project.title} projectId={project.id} inProgress={project.inProgress} />
                 </div>
             {/each}
             <!-- Spacer ensures the last item has padding on the right when scrolling -->

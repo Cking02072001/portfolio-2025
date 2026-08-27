@@ -3,6 +3,7 @@
     import { error } from '@sveltejs/kit';
     import { projects, wipProjects } from '$lib/data/projects';
     import StarSvg from '$lib/svg/StarSvg.svelte';
+    import Lightbox from '$lib/components/Lightbox.svelte';
 
     // Derived state to react to URL changes
     let projectId = $derived($page.url.searchParams.get('id') || "lumina-identity");
@@ -22,6 +23,56 @@
         
         return foundProject;
     });
+
+    // Hauptbild und Galerie bilden zusammen die Lightbox-Reihenfolge
+    let lightboxImages = $derived([project.mainImage, ...(project.images ?? [])]);
+    let lightboxIndex = $state(-1);
+
+    // Beim Projektwechsel die Lightbox schließen
+    $effect(() => {
+        projectId;
+        lightboxIndex = -1;
+    });
+
+    /**
+     * Spaltenbreiten für das Bento-Raster.
+     * Grundmuster ist 2+2 / 1+2+1 / 2+2, jede Zeile also vier Spalten breit.
+     * Bleibt die letzte Zeile unvollständig, wachsen ihre Bilder auf,
+     * damit rechts kein Weißraum stehen bleibt.
+     */
+    const BENTO_MUSTER = [2, 2, 1, 2, 1, 2, 2];
+
+    function bentoSpans(anzahl: number): number[] {
+        const spans = Array.from({ length: anzahl }, (_, i) => BENTO_MUSTER[i % BENTO_MUSTER.length]);
+
+        // In Zeilen zu je vier Spalten gruppieren
+        const zeilen: number[][] = [];
+        let zeile: number[] = [];
+        let belegt = 0;
+        for (let i = 0; i < spans.length; i++) {
+            if (belegt + spans[i] > 4) {
+                zeilen.push(zeile);
+                zeile = [];
+                belegt = 0;
+            }
+            zeile.push(i);
+            belegt += spans[i];
+        }
+        if (zeile.length) zeilen.push(zeile);
+
+        // Restspalten der letzten Zeile gleichmäßig verteilen
+        const letzte = zeilen.at(-1);
+        if (letzte) {
+            let rest = 4 - letzte.reduce((summe, i) => summe + spans[i], 0);
+            for (let k = 0; rest > 0; k++, rest--) {
+                spans[letzte[k % letzte.length]] += 1;
+            }
+        }
+
+        return spans;
+    }
+
+    let spans = $derived(bentoSpans(project.images?.length ?? 0));
 </script>
 
 <svelte:head>
@@ -44,7 +95,14 @@
     <!-- Top Section: Split Layout -->
     <section class="split-intro">
         <div class="image-column">
-            <img src={project.mainImage} alt={project.title} />
+            <button class="zoom" onclick={() => (lightboxIndex = 0)} aria-label="{project.title} vergrößern">
+                <img
+                    src={project.mainImage}
+                    alt="{project.title}, {project.shortDescription}"
+                    fetchpriority="high"
+                    decoding="async"
+                />
+            </button>
         </div>
         <div class="text-column">
             <h1>{project.title}</h1>
@@ -86,9 +144,15 @@
             <h2>Project Gallery</h2>
             <div class="bento-grid">
                 {#each project.images as img, i}
-                    <!-- varying classes for bento layout logic -->
-                    <div class="bento-item item-{i}">
-                        <img src={img} alt="Project Detail {i + 1}" />
+                    <div class="bento-item" style:grid-column="span {spans[i]}">
+                        <button class="zoom" onclick={() => (lightboxIndex = i + 1)} aria-label="Bild {i + 1} vergrößern">
+                            <img
+                                src={img}
+                                alt="{project.title}, Detailansicht {i + 1} von {project.images.length}"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </button>
                     </div>
                 {/each}
             </div>
@@ -97,7 +161,27 @@
 
 </div>
 
+<Lightbox
+    images={lightboxImages}
+    notes={project.imageNotes ?? []}
+    bind:index={lightboxIndex}
+    altText={project.title}
+/>
+
 <style lang="scss">
+    /* Bilder sind anklickbar und öffnen die Lightbox */
+    .zoom {
+        display: block;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: none;
+        cursor: zoom-in;
+        font: inherit;
+    }
+
     .categories {
         display: flex;
         gap: var(--spacing-10);
@@ -229,14 +313,11 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         
-        /* Explicitly define 3 rows with requested heights:
-           Row 1: 450px (Taller)
-           Row 2: 350px (Shorter)
-           Row 3: 350px (Shorter)
-        */
-        grid-template-rows: 450px 350px 350px;
-        grid-auto-rows: 350px; /* Fallback for any extra items */
-        
+        /* Nur die erste Zeile ist fest und höher. Alle weiteren entstehen
+           nach Bedarf, damit bei wenigen Bildern keine leeren Zeilen bleiben. */
+        grid-template-rows: 450px;
+        grid-auto-rows: 350px;
+
         gap: 20px;
         width: 100%;
     }
@@ -259,25 +340,8 @@
         }
     }
 
-    /* Bento Grid Layout Logic
-       Layout Plan:
-       Row 1: [ Item 0 (2col) ] [ Item 1 (2col) ]
-       Row 2: [ Item 2 (1col) ] [ Item 3 (2col) ] [ Item 4 (1col) ]
-       Row 3: [ Item 5 (2col) ] [ Item 6 (2col) ]
-    */
-    
-    /* Row 1 */
-    .item-0 { grid-column: span 2; }
-    .item-1 { grid-column: span 2; }
-
-    /* Row 2 */
-    .item-2 { grid-column: span 1; }
-    .item-3 { grid-column: span 2; }
-    .item-4 { grid-column: span 1; }
-
-    /* Row 3 */
-    .item-5 { grid-column: span 2; }
-    .item-6 { grid-column: span 2; }
+    /* Die Spaltenbreite je Bild setzt bentoSpans() im Script,
+       abhängig davon wie viele Bilder ein Projekt hat. */
 
     /* Mobile Responsive */
     @media (max-width: 900px) {

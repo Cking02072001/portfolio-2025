@@ -7,6 +7,14 @@ export interface Project {
     longDescription: string;
     mainImage: string;
     images: string[];
+    /**
+     * Handschriftliche Randnotizen für die Lightbox.
+     * Index 0 gehört zum mainImage, danach folgen die Bilder aus images in gleicher Reihenfolge.
+     * Einzelne Einträge dürfen leer bleiben, dann zeigt die Lightbox dort keine Notiz.
+     */
+    imageNotes?: string[];
+    /** Zeigt den "In Arbeit" Stempel auf der Karte in Bits & Pieces. */
+    inProgress?: boolean;
     defaultImage: string;
     hoverImage: string;
     projectButtonLink?: string;
@@ -20,7 +28,7 @@ export interface ProjectsData {
     projects: Project[];
 }
 
-export const categories = ["Alle", "Webdesign", "Brand & Logo", "Social Media & Marketing", "Grafik & Print"];
+export const categories = ["Alle", "Webdesign", "Brand & Logo", "Social Media & KI Chatbots", "Grafik & Print"];
 
 export const projects: Project[] = [
     {
@@ -40,6 +48,10 @@ export const projects: Project[] = [
             "/Photos/Sascha/Wand.jpg",
             "/Photos/Sascha/Notitz.jpg"
         ],
+        imageNotes: [
+            "", "", "", "", "", "",
+            "Das ist so tech mit der Betonwand, weiß man gar nicht ob Gefängnis oder Tech Büro"
+        ],
         defaultImage: "/Photos/Sascha/Idle.jpg",
         hoverImage: "/Photos/Sascha/Hovercard.jpg",
         pdfLabel: "Brandlook",
@@ -47,18 +59,23 @@ export const projects: Project[] = [
     },
     {
         id: "Mandarfner Hof",
-        tags: ["Webdesign", "Social Media & Marketing", "Grafik & Print"],
+        tags: ["Webdesign", "Social Media & KI Chatbots", "Grafik & Print"],
         title: "Mandarfner Hof",
         link: "#",
-        shortDescription: "Webdesign, In House Marketing und Print für ein alpines Hotel",
-        longDescription: "Der Mandarfner Hof ist kein Projekt, das ich von außen betrachte. Als Teil des Teams gestalte ich alles, was Gäste sehen bevor sie ankommen und nachdem sie weg sind. Social Media, Broschüren, Newsletter, Website. Das Webdesign entstand in Zusammenarbeit mit © Werbezimmer. Der rote Faden zieht sich durch jeden Touchpoint.",
+        shortDescription: "Webdesign, In House Marketing, Print und KI Assistent für ein alpines Hotel",
+        longDescription: "Der Mandarfner Hof ist kein Projekt, das ich von außen betrachte. Als Teil des Teams gestalte ich alles, was Gäste sehen bevor sie ankommen und nachdem sie weg sind. Social Media, Broschüren, Newsletter, Website. Das Webdesign entstand in Zusammenarbeit mit © Werbezimmer. Dazu kommt Oskar, der digitale KI Assistent des Hauses. Oskar gibt es wirklich, er ist unser Hund und hat jetzt eine digitale Version, die Gästefragen beantwortet und dabei klingt wie das Haus selbst. Der rote Faden zieht sich durch jeden Touchpoint.",
         mainImage: "/Photos/Mandarfnerhof/Main.jpg",
         images: [
             "/Photos/Mandarfnerhof/Card.jpg",
             "/Photos/Mandarfnerhof/Social.jpg",
             "/Photos/Mandarfnerhof/Web.jpg",
             "/Photos/Mandarfnerhof/Newsletter.jpg",
-            "/Photos/Mandarfnerhof/Mobil.jpg"
+            "/Photos/Mandarfnerhof/Mobil.jpg",
+            "/Photos/Mandarfnerhof/Oskar.jpg"
+        ],
+        imageNotes: [
+            "", "",
+            "Jeder Post trägt dieselbe Handschrift"
         ],
         defaultImage: "/Photos/Mandarfnerhof/Idle.jpg",
         hoverImage: "/Photos/Mandarfnerhof/Hovercard.jpg",
@@ -82,6 +99,11 @@ export const projects: Project[] = [
             "/Photos/Vox&Arc/V&A-04.jpg",
             "/Photos/Vox&Arc/V&A-03.jpg"
         ],
+        imageNotes: [
+            "Das wär so ein cooles reales Projekt mit den Mediengegenpolen",
+            "", "", "", "", "",
+            "Look its meee"
+        ],
         defaultImage: "/Photos/Vox&Arc/Vox&Arc Card.jpg",
         hoverImage: "/Photos/Vox&Arc/V&A-hover.jpg",
         pdfLabel: "Brandlook & Screendesign",
@@ -103,12 +125,15 @@ export const projects: Project[] = [
             "/Photos/West Amber/Websitelayout.jpg",
             "/Photos/West Amber/Mac.jpg",
             "/Photos/West Amber/Glas-Flasche.jpg"],
+        imageNotes: [
+            "Inspiriert von meiner Liebe zu Whisky und Westies"
+        ],
         pdfLabel: "Brandlook & Screendesign",
         pdfLink: "/PDFs/WestAmber/Brandlook_Screendesign.pdf"
     },
     {
         id: "Mikit",
-        tags: ["Brand & Logo", "Social Media & Marketing"],
+        tags: ["Brand & Logo", "Social Media & KI Chatbots"],
         title: "MIKIT",
         shortDescription: "Schmuck-Branding mit Fokus auf Natur und mentale Gesundheit",
         longDescription: "MIKIT hat als Studienprojekt angefangen. Es ist zu etwas anderem geworden. Schmuckstücke aus Naturelementen, die mehr sein wollen als Accessoires. Das Konzept geht vom Produkt über das Packaging bis zum Social Media Feed. Jedes Detail denkt mit.",
@@ -120,6 +145,9 @@ export const projects: Project[] = [
             "/Photos/Mikit/Social Media.jpg",
             "/Photos/Mikit/Ketteverpackt.jpg"
         ],
+        imageNotes: [
+            "Schick und Edel"
+        ],
         defaultImage: "/Photos/Mikit/Idle.jpg",
         hoverImage: "/Photos/Mikit/Hovercard.jpg",
         pdfLabel: "Brandlook & Screendesign",
@@ -127,7 +155,7 @@ export const projects: Project[] = [
     },
     {
         id: "Nudeiful",
-        tags: ["Brand & Logo", "Social Media & Marketing", "Webdesign", "Grafik & Print"],
+        tags: ["Brand & Logo", "Social Media & KI Chatbots", "Webdesign", "Grafik & Print"],
         title: "Nudeiful",
         shortDescription: "Nordischer Minimalismus für nachhaltige Kosmetik",
         longDescription: "Weniger ist hier kein Kompromiss. Nudeiful steht für Lidschatten, die man nachfüllt statt wegwirft. Das Design denkt das konsequent zu Ende. Reduziert, klar, hochwertig. Inklusive Storyboard für einen YouTube-Spot, weil ein gutes Konzept mehr als eine Oberfläche braucht.",
@@ -141,6 +169,9 @@ export const projects: Project[] = [
             "/Photos/Nudeiful/Web.jpg",
             "/Photos/Nudeiful/Web-shop.jpg"
         ],
+        imageNotes: [
+            "Wesentliche Verbesserung gegenüber dem Uni Prototypen von 2023, hihi"
+        ],
         defaultImage: "/Photos/Nudeiful/Idle.jpg",
         hoverImage: "/Photos/Nudeiful/Hovercard.jpg",
         pdfLabel: "Brandlook & Screendesign",
@@ -148,7 +179,7 @@ export const projects: Project[] = [
     },
     {
         id: "Herzstachel",
-        tags: ["Social Media & Marketing", "Brand & Logo", "Webdesign"],
+        tags: ["Social Media & KI Chatbots", "Brand & Logo", "Webdesign"],
         title: "Herzstachel",
         shortDescription: "Branding für eine fiktive Igelzucht mit Herz",
         longDescription: "Igel sind kein Kinderkram. Das war mein Ausgangspunkt. Herzstachel züchtet Afrikanische Weißbauchigel ethisch und mit Sorgfalt. Das Branding sollte genau das ausstrahlen. Niedlich ohne niedlich zu sein. Mit Logo, Website und einem Newsletter, der werdende Igeleltern begleitet.",
@@ -159,6 +190,10 @@ export const projects: Project[] = [
             "/Photos/Herz/Mobil.jpg",
             "/Photos/Herz/Mitte.jpg",
             "/Photos/Herz/Websitelayout.jpg"
+        ],
+        imageNotes: [
+            "",
+            "So ein KI Schnuggi und der Igel auch :)"
         ],
         defaultImage: "/Photos/Herz/Idle.jpg",
         hoverImage: "/Photos/Herz/Hovercard.jpg",
@@ -186,7 +221,7 @@ export const projects: Project[] = [
     },
     {
         id: "Martina",
-        tags: ["Brand & Logo", "Webdesign", "Social Media & Marketing", "Grafik & Print"],
+        tags: ["Brand & Logo", "Webdesign", "Grafik & Print"],
         title: "MeVitality",
         link: "https://www.mevitality.de/",
         shortDescription: "Personal Branding für psychosoziale Beratung und Coaching",
@@ -195,7 +230,46 @@ export const projects: Project[] = [
         mainImage: "/Photos/Martina/Mainimage.jpg",
         defaultImage: "/Photos/Martina/Idle.jpg",
         hoverImage: "/Photos/Martina/Hovercard.jpg",
-        images: []
+        images: [
+            "/Photos/Martina/Martina-04.jpg",
+            "/Photos/Martina/Martina-05.jpg",
+            "/Photos/Martina/Martina-01.jpg",
+            "/Photos/Martina/Martina-03.jpg",
+            "/Photos/Martina/Martina-02.jpg"
+        ],
+        pdfLabel: "Brandlook",
+        pdfLink: "/PDFs/Martina/Brand-Look.pdf"
+    },
+    {
+        id: "Autohaus Heiss",
+        tags: ["Webdesign"],
+        title: "Autohaus Heiß",
+        shortDescription: "Webdesign, UI/UX und Konzept für ein Autohaus mit Werkstatt und Automanager",
+        longDescription: "Ein Autohaus ist mehr als der Schauraum. Verkauf, Werkstatt, Beratung und Karosserie müssen online genauso selbstverständlich zusammenfinden wie vor Ort. Für das Autohaus Heiß bin ich den ganzen Weg gegangen. Vom Konzept über das Wireframe und das Screendesign bis zur fertig befüllten Website mit angebundenem Automanager. Konsequent nach dem bestehenden Corporate Design gedacht. Entstanden bei © Werbezimmer.",
+        mainImage: "/Photos/Autohaus Heiss/Mainimage.jpg",
+        images: [
+            "/Photos/Autohaus Heiss/AH-1.jpg",
+            "/Photos/Autohaus Heiss/AH-2.jpg",
+            "/Photos/Autohaus Heiss/AH-3.jpg",
+            "/Photos/Autohaus Heiss/AH-4.jpg",
+            "/Photos/Autohaus Heiss/AH-5.jpg"
+        ],
+        defaultImage: "/Photos/Autohaus Heiss/Idle.jpg",
+        hoverImage: "/Photos/Autohaus Heiss/Hovercard.jpg"
+    },
+    {
+        id: "KI Chatbots",
+        tags: ["Social Media & KI Chatbots"],
+        title: "KI Chatbots",
+        shortDescription: "Aufsetzen, Einstellen und Warten von KI Chatbots für mehrere Werbezimmer Kunden",
+        longDescription: "Ein guter Chatbot klingt nicht wie ein Chatbot. Ich setze die Bakehouse Assistenten auf, gebe ihnen Wissen, Tonalität und einen Namen und halte sie danach regelmäßig aktuell. Rohrbert bei Sailer, Brandit im Werbezimmer, Quelli bei Quellalpin, Ladi im Laderhof, Ladizia im Ladizium, die Rezeptionsmädels der Post Nauders, Ida bei Mein Edelweiss, Emil im Essigmanngut, Toni am Burgsee und ganz neu Angie im Hotel Angela, die gerade noch trainiert wird. Entstanden bei © Werbezimmer.",
+        mainImage: "/Photos/KI Chatbots/Mainimage.jpg",
+        images: [
+            "/Photos/KI Chatbots/KI-01.jpg",
+            "/Photos/KI Chatbots/KI-02.jpg"
+        ],
+        defaultImage: "/Photos/KI Chatbots/Idle.jpg",
+        hoverImage: "/Photos/KI Chatbots/Hovercard.jpg"
     },
 
 
@@ -204,6 +278,7 @@ export const projects: Project[] = [
 export const wipProjects: Project[] = [
     {
         id: "Anger Alm",
+        inProgress: true,
         tags: ["Projects", "Webdesign", "Brand & Logo"],
         title: "Anger Alm",
         shortDescription: "Komplettes Branddesign mit Identity, CD, Website und Animationen",
@@ -214,13 +289,94 @@ export const wipProjects: Project[] = [
         hoverImage: "/Photos/Anger Alm/Card-Hover.jpg"
     },
     {
+        id: "Edelmanns",
+        tags: ["Projects", "Webdesign"],
+        title: "Edelmanns Villa & Suites",
+        shortDescription: "Rebranding und Relaunch der Website",
+        longDescription: "Ein Haus mit Charakter braucht einen Auftritt mit Charakter. Für Edelmanns Villa & Suites entstand ein komplett neues Konzept für die Website. Neue Schriften, neue Farben, neuer Aufbau. Entstanden bei © Werbezimmer.",
+        mainImage: "/Photos/Edelmanns/Mainimage.jpg",
+        images: [
+            "/Photos/Edelmanns/Edelmanns-1.jpg",
+            "/Photos/Edelmanns/Edelmanns-2.jpg"
+        ],
+        defaultImage: "/Photos/Edelmanns/Idle.jpg",
+        hoverImage: "/Photos/Edelmanns/Hovercard.jpg"
+    },
+    /* Warten auf Bildmaterial. Zum Reaktivieren die Kommentarzeichen
+       um den jeweiligen Block entfernen, sobald der Ordner unter
+       static/Photos/ Hero, Idle und Hovercard enthält.
+    {
+        id: "Sailer",
+        inProgress: true,
+        tags: ["Projects", "Webdesign", "Social Media & KI Chatbots"],
+        title: "Sailer",
+        shortDescription: "Kompletter Website Relaunch in Bento Optik",
+        longDescription: "Vieles bleibt vertraut und wirkt trotzdem völlig neu. Für Sailer wurde die Website von Grund auf neu gedacht. Neue Schriften, neue Komponenten, neues Layout in Bento Boxen für maximale Modernisierung. Entstanden bei © Werbezimmer. Mehr folgt.",
+        mainImage: "/Photos/Sailer/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/Sailer/Idle.jpg",
+        hoverImage: "/Photos/Sailer/Hovercard.jpg"
+    },
+    {
+        id: "Dialps",
+        inProgress: true,
+        tags: ["Projects", "Webdesign"],
+        title: "Dialps Hotelvertrieb",
+        shortDescription: "Webdesign auf Basis eines neuen Corporate Designs",
+        longDescription: "Vom neuen Corporate Design zur fertigen Seite. Für Dialps Hotelvertrieb entsteht der komplette Weg. Konzept, High Fidelity Wireframe und die finale Live Seite. Entstanden bei © Werbezimmer. Mehr folgt.",
+        mainImage: "/Photos/Dialps/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/Dialps/Idle.jpg",
+        hoverImage: "/Photos/Dialps/Hovercard.jpg"
+    },
+    {
+        id: "SGG",
+        inProgress: true,
+        tags: ["Projects", "Webdesign"],
+        title: "SGG",
+        shortDescription: "Konzept und High Fidelity Entwürfe für eine neue Website",
+        longDescription: "Baustil als Gestaltungsprinzip. Für SGG entstehen Konzept und High Fidelity Entwürfe einer neuen Website inklusive Animationsideen, die das Thema aufgreifen ohne plakativ zu werden. Entstanden bei © Werbezimmer. Mehr folgt.",
+        mainImage: "/Photos/SGG/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/SGG/Idle.jpg",
+        hoverImage: "/Photos/SGG/Hovercard.jpg"
+    },
+    {
+        id: "LWL",
+        inProgress: true,
+        tags: ["Projects", "Webdesign"],
+        title: "LWL",
+        shortDescription: "Website Rebranding im Zuge einer nationalen Markenumstellung",
+        longDescription: "Die Marke stellt sich auf nationaler Ebene neu auf und die regionale Website zieht mit. Neue Schriften, überarbeitete Komponenten, ein Auftritt der zur neuen Linie passt. Konzept und Entwürfe. Entstanden bei © Werbezimmer. Mehr folgt.",
+        mainImage: "/Photos/LWL/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/LWL/Idle.jpg",
+        hoverImage: "/Photos/LWL/Hovercard.jpg"
+    },
+    {
+        id: "TVB Anif",
+        inProgress: true,
+        tags: ["Projects", "Webdesign"],
+        title: "TVB Anif",
+        shortDescription: "Konzept und Design einzelner Datensatz Module",
+        longDescription: "Veranstaltungen, Unterkünfte, Aktivitäten. Für den TVB Anif gestalte ich die Module dahinter inklusive Detailseiten und angepasster Komponenten. Struktur, die man nicht sieht aber sofort merkt. Entstanden bei © Werbezimmer. Mehr folgt.",
+        mainImage: "/Photos/TVB Anif/Hero.jpg",
+        images: [],
+        defaultImage: "/Photos/TVB Anif/Idle.jpg",
+        hoverImage: "/Photos/TVB Anif/Hovercard.jpg"
+    },
+    */
+    {
         id: "Alpin Camping",
-        tags: ["Projects", "Webdesign", "Social Media & Marketing"],
+        tags: ["Projects", "Webdesign"],
         title: "Alpin Camping Kaunertal",
         shortDescription: "Screendesign und Newsletter für ein alpines Camping-Areal",
         longDescription: "Vier Unterseiten, eine klare Struktur und ein Newsletter-System, das mitdenkt. Für das Alpin Camping Kaunertal habe ich Screendesign und Menüarchitektur gestaltet. Entstanden 2026 bei © Werbezimmer.",
         mainImage: "/Photos/Alpin Camping/Hero.jpg",
         images: [],
+        imageNotes: [
+            "Wer braucht schon ein Hotelzimmer, wenn man in der Natur Urlaub machen kann?"
+        ],
         defaultImage: "/Photos/Alpin Camping/Card-Idle.jpg",
         hoverImage: "/Photos/Alpin Camping/Card-Hover.jpg"
     },
@@ -250,6 +406,7 @@ export const wipProjects: Project[] = [
         defaultImage: "/Photos/SkiLuis/Idle.jpg",
         hoverImage: "/Photos/SkiLuis/Hovercard.jpg",
     },
+    /* Derzeit ausgeblendet. Zum Reaktivieren einfach auskommentieren aufheben.
     {
         id: "M...",
         tags: ["Projects", "Webdesign", "Brand & Logo"],
@@ -286,6 +443,7 @@ export const wipProjects: Project[] = [
         defaultImage: "/Photos/S/Idle.jpg",
         hoverImage: "/Photos/S/Hovercard.jpg",
     },
+    */
     {
         id: "Bäckelar Wirt",
         tags: ["Projects", "Webdesign", "Brandi & Logo"],

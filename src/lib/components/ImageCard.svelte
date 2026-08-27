@@ -49,7 +49,7 @@
   <div class="image-container">
     <Doodle variant={accentVariant} size={48} color="#923c56" rotate={-12} style="position:absolute; top:4px; left:4px; z-index:5;" />
     <div class="card-image-wrapper">
-      <img src={isHovered ? hoverImageSrc : imageSrc} alt={title} />
+      <img src={isHovered ? hoverImageSrc : imageSrc} alt={title} loading="lazy" decoding="async" />
     </div>
   </div>
 

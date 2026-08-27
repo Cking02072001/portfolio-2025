@@ -1,0 +1,8 @@
+Bilder hier ablegen:
+
+Hero.jpg        - grosses Bild oben in der Projektdetailseite
+Idle.jpg        - Karte im Normalzustand
+Hovercard.jpg   - Karte beim Hovern
+
+Optional weitere Bilder fuer die Galerie, danach in projects.ts eintragen.
+PNGs werden vor dem Commit zu JPEG konvertiert.
